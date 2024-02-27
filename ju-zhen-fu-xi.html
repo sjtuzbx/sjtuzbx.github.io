@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+	<!--<link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">-->
+	<!--<script src="/theme/js/less.js" type="text/javascript"></script>-->
+	<link rel="stylesheet" type="text/css" href="/theme/css/pygments.css">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
+
+	<link href="/" type="application/atom+xml" rel="alternate" title="无聊的笔记 ATOM Feed" />
+
+
+		<title>无聊的笔记</title>
+		<meta charset="utf-8" />
+</head>
+<body>
+	<section id="sidebar">
+		<figure id="user_logo">
+            <a href=""><div class="logo">&nbsp;</div></a>
+		</figure>
+
+		<div class="user_meta">
+            <h1 id="user"><a href="" class="">zbx</a></h1>
+			<h2></h2>
+			<ul>
+					<li><a href="https://github.com/sjtuzbx">Github</a></li>
+					<li><a href="https://stupidbookfish.blogspot.com/">Blogger</a></li>
+			</ul>
+		</div>
+		<footer>
+			<address>
+				Powered by <a href="http://pelican.notmyidea.org/">Pelican</a>,
+		                theme by <a href="https://github.com/wting/pelican-svbtle">wting</a>.
+			</address>
+		</footer>
+	</section>
+
+	<section id="posts">
+	<header>
+		<h1>张本轩's blog</h1>
+		<h3>Posted 六 20 十月 2018</h3>
+	</header>
+	<article>
+		<h1 id="title">
+			<a href="/ju-zhen-fu-xi.html" rel="bookmark"
+				title="Permalink to 矩阵复习">矩阵复习</a>
+		</h1>
+		<h2>一些有用的结论</h2>
+<ul>
+<li>实对称阵可以正交对角化</li>
+<li>特征值 <span class="math">\(\lambda_i\)</span>的几何重数是<span class="math">\((\lambda I-A)x=0\)</span>的基础解系的个数</li>
+<li>特征值 <span class="math">\(\lambda_i\)</span>的代数重数<span class="math">\(n_i\)</span>是<span class="math">\(|\lambda&nbsp;I-A|=\Pi_{i=1}^s(\lambda-\lambda_i)^{n_i}\)</span></li>
+<li>矩阵的行列式是所有特征值的乘积</li>
+<li>矩阵的迹是所有特征值的和</li>
+<li>A可逆 <span class="math">\(\leftrightarrow\)</span>&nbsp;0不是A的特征值</li>
+<li>任何特征值的几何重数不超过其代数重数</li>
+<li>相似矩阵具有相同的特征多项式，也具有相同的特征值</li>
+</ul>
+<h3>特征向量</h3>
+<ul>
+<li>属于不同特征值的特征向量线性无关</li>
+<li>n阶矩阵A可以对角化 <span class="math">\(\leftrightarrow\)</span> A有n个线性无关的特征向量 <span class="math">\(\leftrightarrow\)</span> <span class="math">\(F^n\)</span>有一组由A的特征向量组成的基 <span class="math">\(\leftrightarrow\)</span>&nbsp;A的每个特征值的几何重数等于代数重数，特别的，若A有n个不同的特征值，则A可以对角化</li>
+</ul>
+<h3>空间</h3>
+<ul>
+<li>设<span class="math">\(\alpha_1, \alpha_2, \cdots, \alpha_n\)</span>是一组标准正交基，则矩阵<span class="math">\(Q=(\alpha_1, \alpha_2, \cdots, \alpha_n)\)</span>称为酉矩阵，实的酉矩阵称为正交矩阵</li>
+<li>酉矩阵的逆矩阵是其共轭转置矩阵</li>
+<li>正交矩阵的逆矩阵是其转置矩阵</li>
+<li>复共轭对称矩阵称为Hermite矩阵</li>
+<li>Hermite矩阵的特征值都为实数，且属于不同特征值的特征向量彼此正交</li>
+<li>设A是n阶Hermite矩阵，则下列条件等价<ul>
+<li>A正定</li>
+<li>A的特征值均为正实数</li>
+</ul>
+</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+		<div id="article_meta">
+				Category:
+					<a href="/category/math.html">Math</a>
+				<br />Tags:
+					<a href="/tag/matrix.html">matrix</a>
+		</div>
+	</article>
+
+	<footer>
+		<a href="/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+	</footer>
+
+
+	</section>
+
+</body>
+</html>

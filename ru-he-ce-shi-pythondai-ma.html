@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+	<!--<link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">-->
+	<!--<script src="/theme/js/less.js" type="text/javascript"></script>-->
+	<link rel="stylesheet" type="text/css" href="/theme/css/pygments.css">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
+
+	<link href="/" type="application/atom+xml" rel="alternate" title="无聊的笔记 ATOM Feed" />
+
+
+		<title>无聊的笔记</title>
+		<meta charset="utf-8" />
+</head>
+<body>
+	<section id="sidebar">
+		<figure id="user_logo">
+            <a href=""><div class="logo">&nbsp;</div></a>
+		</figure>
+
+		<div class="user_meta">
+            <h1 id="user"><a href="" class="">zbx</a></h1>
+			<h2></h2>
+			<ul>
+					<li><a href="https://github.com/sjtuzbx">Github</a></li>
+					<li><a href="https://stupidbookfish.blogspot.com/">Blogger</a></li>
+			</ul>
+		</div>
+		<footer>
+			<address>
+				Powered by <a href="http://pelican.notmyidea.org/">Pelican</a>,
+		                theme by <a href="https://github.com/wting/pelican-svbtle">wting</a>.
+			</address>
+		</footer>
+	</section>
+
+	<section id="posts">
+	<header>
+		<h1>张本轩's blog</h1>
+		<h3>Posted 二 27 二月 2024</h3>
+	</header>
+	<article>
+		<h1 id="title">
+			<a href="/ru-he-ce-shi-pythondai-ma.html" rel="bookmark"
+				title="Permalink to 如何测试python代码">如何测试python代码</a>
+		</h1>
+		<h2>Profiling&nbsp;Python</h2>
+<h3>Timeit</h3>
+<p>You can use <code>timeit</code> in IPython to time the&nbsp;statement.</p>
+<p><img alt="timeit" src="img/ipython-timeit.png"></p>
+<h3>Profiler</h3>
+<p>Say you have following python&nbsp;code:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">solve</span><span class="p">()</span>
+</code></pre></div>
+
+<p>You can time the script using following code in&nbsp;ipython:</p>
+<p><img alt="profile" src="img/ipython-profile.png"></p>
+<p>You can also use <code>python -m cProfile test.py</code> to&nbsp;profile.</p>
+<h3>Line-profiler</h3>
+<ol>
+<li>Use <code>pip install line_profiler</code> to&nbsp;install</li>
+<li>add <code>@profile</code> to decorate your&nbsp;function</li>
+<li>Use <code>kernprof -l -v test.py</code> to&nbsp;profile</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="nd">@profile</span>
+<span class="k">def</span> <span class="nf">solve</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">solve</span><span class="p">()</span>
+</code></pre></div>
+
+<p><img alt="lineprofile" src="img/ipython-lineprofile.png"></p>
+<h2>Reference</h2>
+<p><a href="https://www.scipy-lectures.org/advanced/optimizing/index.html">optimize python code</a>
+<a href="https://github.com/rkern/line_profiler">line-profiler</a></p>
+
+		<div id="article_meta">
+				Category:
+					<a href="/category/programming.html">Programming</a>
+				<br />Tags:
+					<a href="/tag/python.html">python</a>
+		</div>
+	</article>
+
+	<footer>
+		<a href="/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+	</footer>
+
+
+	</section>
+
+</body>
+</html>
