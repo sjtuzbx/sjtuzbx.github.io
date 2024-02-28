@@ -1,8 +1,9 @@
 Title: VS Code使用Anaconda Prompt作为默认terminal
 Date: 2018-10-07 21:03
 Category: Configuration
-Tags: vscode 
+Tags: tool
 Author: sjtuzbx
+Summary: VS Code怎么使用使用Anaconda Prompt作为默认terminal
 
 ### Solution
 

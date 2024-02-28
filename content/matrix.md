@@ -1,8 +1,9 @@
 Title: 矩阵复习
 Date: 2018-10-20 20:48
 Category: Math
-Tags: matrix
+Tags: math
 Author: sjtuzbx
+Summary: 一些有用的结论: 实对称阵可以正交对角化
 
 ## 一些有用的结论
 

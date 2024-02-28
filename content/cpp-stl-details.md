@@ -1,8 +1,9 @@
 Title: C++ STL常用数据结构整理
 Date: 2018-10-07 20:21
-Category: Programming
-Tags: c++, stl
+Category: programming
+Tags: programing
 Author: sjtuzbx
+Summary: vector, stack, queue, list, forward_list, deque, priority_queue, set...
 
 1. vector
     * 插入push_back(), 时间复杂度O(1)

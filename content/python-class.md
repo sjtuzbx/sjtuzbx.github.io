@@ -1,8 +1,9 @@
 Title: Python类总结
 Date: 2018-10-21 13:52
-Category: Programming
-Tags: python
+Category: programming
+Tags: programing
 Author: sjtuzbx
+Summary: 类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保持各自的状态，类实例有类方法来修改类状态。
 
 ## Class
 

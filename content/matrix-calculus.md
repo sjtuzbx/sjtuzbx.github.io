@@ -1,7 +1,7 @@
 Title: Matrix Calculus
 Date: 2018-10-20 16:03
 Category: Math
-Tags: matrix, calculus
+Tags: math
 Author: sjtuzbx
 Summary: 这篇文章总结矩阵微积分中使用的一些公式
 

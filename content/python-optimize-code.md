@@ -1,8 +1,9 @@
 Title: 如何测试python代码
-Date: 2018:10:25 13:51
-Category: Programming
-Tags: python
+Date: 2018-10-25 13:51
+Category: programming
+Tags: programing
 Author: sjtuzbx
+Summary: 怎么profile python代码。
 
 ## Profiling Python 
 
@@ -10,7 +11,7 @@ Author: sjtuzbx
 
 You can use `timeit` in IPython to time the statement.
 
-![](images/ipython-timeit.png)
+![timeit](images/ipython-timeit.png)
 
 ### Profiler
 
@@ -30,7 +31,7 @@ if __name__ == '__main__':
 
 You can time the script using following code in ipython:
 
-![](images/ipython-profile.png)
+![profile](images/ipython-profile.png)
 
 You can also use `python -m cProfile test.py` to profile.
 
@@ -53,7 +54,7 @@ if __name__ == '__main__':
     solve()
 ```
 
-![](images/ipython-lineprofile.png)
+![lineprofile](images/ipython-lineprofile.png)
 
 ## Reference
 

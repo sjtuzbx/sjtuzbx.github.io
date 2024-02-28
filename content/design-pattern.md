@@ -1,8 +1,9 @@
 Title: 设计模式
 Date: 2018-10-21 15:53
-Category: Programming
-Tags: design pattern
+Category: programming
+Tags: programing
 Author: sjtuzbx
+Summary: 策略模式, 观察者模式, 装饰者模式, 工厂方法模式
 
 ## Head first设计模式
 

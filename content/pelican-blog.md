@@ -1,8 +1,9 @@
 Title: pelican blog搭建
 Date: 2018-10-20 16:32
-Category: Programming
-Tags: pelican, blog
+Category: programming
+Tags: programing
 Author: sjtuzbx
+Summary: pelican配置教程step by step.
 
 ## Installation
 

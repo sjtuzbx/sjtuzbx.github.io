@@ -10,7 +10,7 @@ PATH = 'content'
 
 TIMEZONE = 'Asia/Shanghai'
 
-DEFAULT_LANG = 'en'
+DEFAULT_LANG = 'zh-cn'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -21,15 +21,26 @@ AUTHOR_FEED_RSS = None
 
 THEME = 'pelican-themes/Flex'
 SITETITLE = "Beta's Note"
-SITESUBTITLE = "work hard, keep steady"
+SITESUBTITLE = "一个想找工作的Coder/c++/Python/ai"
+# SITESUBTITLE2 = "work hard, keep steady"
 SITELOGO = "https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4"
 
 # Blogroll
-LINKS = (('Github', 'https://github.com/sjtuzbx'),
-        ('Blogger', 'https://stupidbookfish.blogspot.com/'))
+# LINKS = (('Github', 'https://github.com/sjtuzbx'),
+#         ('Blogger', 'https://stupidbookfish.blogspot.com/'))
 
-# Social widget
-# SOCIAL = (('You can add links in your config file', '#'),)
+LINKS = (
+    ("文章列表", "/archives.html"),
+)
+
+SOCIAL = (
+    ("github", "https://github.com/sjtuzbx"),
+)
+
+MENUITEMS = (
+    ("文章列表", "/archives.html"),
+)
+DISPLAY_PAGES_ON_MENU = True
 
 DEFAULT_PAGINATION = 10
 
@@ -51,7 +62,6 @@ USE_GOOGLE_FONTS = True
 
 # other settings
 MAIN_MENU = True
-LINKS = (('a', 'b'), ('c', 'd'))
 
 SUMMARY_MAX_LENGTH = 30
 

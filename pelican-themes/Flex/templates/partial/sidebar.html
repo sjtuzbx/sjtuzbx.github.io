@@ -16,6 +16,20 @@
     <p>{{ SITESUBTITLE }}</p>
     {% endif %}
 
+    {% if SITESUBTITLE2 %}
+    <p>{{ SITESUBTITLE2 }}</p>
+    {% endif %}
+
+
+    <section id=sidebar_tags>
+      <dl>
+        {% for tag, articles in tags %}
+        <dt><a href="{{ SITEURL }}/tag/{{tag}}"> {{tag}} ({{ articles|count }})</a></dt>
+        {% endfor %}
+        <dt><a id="tags_mores" href='{{ SITEURL }}/tags.html'>...more</a></dt>
+      </dl>
+    </section>
+
     {% if PLUGINS %}
     {% if ('tipue_search' in PLUGINS or 'pelican.plugins.tipue_search' in PLUGINS) %}
     <form class="navbar-search" action="{{ SITEURL }}/search.html" role="search">

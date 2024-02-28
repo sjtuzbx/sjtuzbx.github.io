@@ -5,21 +5,23 @@
 {% block content %}
 <article class="single">
   <header>
-    <h1 id="archives">{{ _('Archives') }}</h1>
+    <h1 id="archives"> 文章列表 </h1>
   </header>
   <div>
     <dl>
       {% set previous_date = False %}
 
-      {% for article in dates %}
-        {% if article.locale_date != previous_date %}
-          {% set previous_date = article.locale_date %}
-          <dt>{{ article.locale_date }}</dt>
-        {% endif %}
-
-        <dd>
-          <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-        </dd>
+      {% for tag, articles in tags %}
+        <dt><h2> {{ tag }}</h2></dt>
+        <ul>
+        {% for article in articles %}
+          {% if article.locale_date != previous_date %}
+            {% set previous_date = article.locale_date %}
+            <li>{{ article.date |strftime('%Y-%m-%d') }} &nbsp; <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }} </a></li>
+          {% endif %}
+        
+        {% endfor %}
+        </ul>
       {% endfor %}
     </dl>
   </div>

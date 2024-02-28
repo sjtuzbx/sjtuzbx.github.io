@@ -1,8 +1,9 @@
 Title: Make总结
-Date: 2018:10:25 14:33
-Category: Programming
-Tags: make
+Date: 2018-10-25 14:33
+Category: programming
+Tags: tool
 Author: sjtuzbx
+Summary: Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过`make -f rules.txt`指定其他文件名.
 
 ## Make
 

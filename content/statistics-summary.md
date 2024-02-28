@@ -1,8 +1,9 @@
 Title: 统计推断复习
 Date: 2018-10-14 20:52
 Category: Math
-Tags: statistics
+Tags: math
 Author: sjtuzbx
+Summary: 统计推断, 总体是所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员)称为个体。与总体相关的特征值称为参数。
 
 ### 总体
 
