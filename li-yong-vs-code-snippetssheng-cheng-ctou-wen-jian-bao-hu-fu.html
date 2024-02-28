@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/custom.css">
+
+  <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+
+
+  <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Beta's Note Atom">
+
+
+
+ 
+
+<meta name="author" content="sjtuzbx" />
+<meta name="description" content="Solution 将下列代码贴入你的snippets中，然后在cpp文件中输入pre+tab即可自动生成相 …" />
+<meta name="keywords" content="vscode, c++">
+
+
+  <meta property="og:site_name" content="Beta's Note"/>
+  <meta property="og:title" content="利用VS Code Snippets生成C++头文件保护符"/>
+  <meta property="og:description" content="Solution 将下列代码贴入你的snippets中，然后在cpp文件中输入pre+tab即可自动生成相 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2018-10-07 20:54:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="/author/sjtuzbx.html">
+  <meta property="article:section" content="Programming"/>
+  <meta property="article:tag" content="vscode"/>
+  <meta property="article:tag" content="c++"/>
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
+
+  <title>Beta's Note &ndash; 利用VS Code Snippets生成C++头文件保护符</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="/">
+      <img src="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4" alt="Beta's Note" title="Beta's Note">
+    </a>
+
+    <h1>
+      <a href="/">Beta's Note</a>
+    </h1>
+
+    <p>work hard, keep steady</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="b" >a</a>
+          </li>
+          <li>
+            <a target="_self" href="d" >c</a>
+          </li>
+      </ul>
+    </nav>
+
+  </div>
+
+</aside>
+  <main>
+
+<nav>
+  <a href="/">Home</a>
+
+
+  <a href="/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu">利用VS Code&nbsp;Snippets生成C++头文件保护符</h1>
+    <p>
+      Posted on Sun 07 October 2018 in <a href="/category/programming.html">Programming</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h3>Solution</h3>
+<p>将下列代码贴入你的<code>snippets</code>中，然后在<code>cpp</code>文件中输入<code>pre</code>+<code>tab</code>即可自动生成相关头文件</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;Preprocessor of cpp file&quot;</span><span class="o">:</span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;prefix&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pre&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;body&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;#ifndef ${TM_FILENAME/(.*)(\\.)+(.*)/$${1:/upcase}_${3:/upcase}/}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;#define ${TM_FILENAME/(.*)(\\.)+(.*)/$${1:/upcase}_${3:/upcase}/}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class ${TM_FILENAME/([a-z])(.*)(\\.)+(.*)/${1:/upcase}${2}/} {&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;$1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;};&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;#endif&quot;</span>
+<span class="w">        </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Preprocessor of cpp and hpp file&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>每一个<code>snippet</code>由<code>prefix</code>, <code>body</code>和<code>description</code>组成,其中<code>prefix</code>表示你的快捷键符，<code>body</code>是你的<code>snippet</code>内容。
+<code>$TM_FILENAME</code>是系统定义的变量，表示当前文件的完整文件名，然后利用正则表达式生成对应的头文件保护符。</p>
+<h3>解决VS&nbsp;Code中markdown的snippet无法自动补全</h3>
+<p>原因是markdown文件中的quickSuggetions默认是false, 因此在user&nbsp;setting中添加下列代码即可</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="ss">&quot;[markdown]&quot;</span><span class="err">:</span><span class="w">  </span><span class="err">{</span>
+<span class="w">    </span><span class="ss">&quot;editor.quickSuggestions&quot;</span><span class="err">:</span><span class="w"> </span><span class="k">true</span>
+<span class="w">  </span><span class="err">}</span><span class="p">,</span>
+</code></pre></div>
+
+<h3>Reference</h3>
+<p><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_global-snippets">https://code.visualstudio.com/docs/editor/userdefinedsnippets#_global-snippets</a>
+<a href="https://github.com/Microsoft/vscode/issues/26108">https://github.com/Microsoft/vscode/issues/26108</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/vscode.html">vscode</a>
+      <a href="/tag/c.html">c++</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Beta's Note ",
+  "url" : "",
+  "image": "https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4",
+  "description": ""
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Beta's Note - Math</title><link href="/" rel="alternate"></link><link href="/feeds/math.atom.xml" rel="self"></link><id>/</id><updated>2018-10-20T20:48:00+08:00</updated><subtitle>work hard, keep steady</subtitle><entry><title>矩阵复习</title><link href="/ju-zhen-fu-xi.html" rel="alternate"></link><published>2018-10-20T20:48:00+08:00</published><updated>2018-10-20T20:48:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-20:/ju-zhen-fu-xi.html</id><summary type="html">&lt;h2&gt;一些有用的结论&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;实对称阵可以正交对角化&lt;/li&gt;
+&lt;li&gt;特征值 &lt;span class="math"&gt;\(\lambda_i\)&lt;/span&gt;的几何重数是&lt;span class="math"&gt;\((\lambda I-A …&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;h2&gt;一些有用的结论&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;实对称阵可以正交对角化&lt;/li&gt;
+&lt;li&gt;特征值 &lt;span class="math"&gt;\(\lambda_i\)&lt;/span&gt;的几何重数是&lt;span class="math"&gt;\((\lambda I-A)x=0\)&lt;/span&gt;的基础解系的个数&lt;/li&gt;
+&lt;li&gt;特征值 &lt;span class="math"&gt;\(\lambda_i\)&lt;/span&gt;的代数重数&lt;span class="math"&gt;\(n_i\)&lt;/span&gt;是&lt;span class="math"&gt;\(|\lambda&amp;nbsp;I-A|=\Pi_{i=1}^s(\lambda-\lambda_i)^{n_i}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;矩阵的行列式是所有特征值的乘积&lt;/li&gt;
+&lt;li&gt;矩阵的迹是所有特征值的和&lt;/li&gt;
+&lt;li&gt;A可逆 &lt;span class="math"&gt;\(\leftrightarrow\)&lt;/span&gt;&amp;nbsp;0不是A的特征值&lt;/li&gt;
+&lt;li&gt;任何特征值的几何重数不超过其代数重数&lt;/li&gt;
+&lt;li&gt;相似矩阵具有相同的特征多项式，也具有相同的特征值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;特征向量&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;属于不同特征值的特征向量线性无关&lt;/li&gt;
+&lt;li&gt;n阶矩阵A可以对角化 &lt;span class="math"&gt;\(\leftrightarrow\)&lt;/span&gt; A有n个线性无关的特征向量 &lt;span class="math"&gt;\(\leftrightarrow\)&lt;/span&gt; &lt;span class="math"&gt;\(F^n\)&lt;/span&gt;有一组由A的特征向量组成的基 &lt;span class="math"&gt;\(\leftrightarrow\)&lt;/span&gt;&amp;nbsp;A的每个特征值的几何重数等于代数重数，特别的，若A有n个不同的特征值，则A可以对角化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;空间&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;设&lt;span class="math"&gt;\(\alpha_1, \alpha_2, \cdots, \alpha_n\)&lt;/span&gt;是一组标准正交基，则矩阵&lt;span class="math"&gt;\(Q=(\alpha_1, \alpha_2, \cdots, \alpha_n)\)&lt;/span&gt;称为酉矩阵，实的酉矩阵称为正交矩阵&lt;/li&gt;
+&lt;li&gt;酉矩阵的逆矩阵是其共轭转置矩阵&lt;/li&gt;
+&lt;li&gt;正交矩阵的逆矩阵是其转置矩阵&lt;/li&gt;
+&lt;li&gt;复共轭对称矩阵称为Hermite矩阵&lt;/li&gt;
+&lt;li&gt;Hermite矩阵的特征值都为实数，且属于不同特征值的特征向量彼此正交&lt;/li&gt;
+&lt;li&gt;设A是n阶Hermite矩阵，则下列条件等价&lt;ul&gt;
+&lt;li&gt;A正定&lt;/li&gt;
+&lt;li&gt;A的特征值均为正实数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Math"></category><category term="matrix"></category></entry><entry><title>Matrix Calculus</title><link href="/matrix-calculus.html" rel="alternate"></link><published>2018-10-20T16:03:00+08:00</published><updated>2018-10-20T16:03:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-20:/matrix-calculus.html</id><summary type="html">&lt;p&gt;这篇文章总结矩阵微积分中使用的一些公式&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Matrix&amp;nbsp;Calculus&lt;/h2&gt;
+&lt;h3&gt;Vector-by-Vector&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial a}{\partial x} =&amp;nbsp;0\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial x}{\partial x} =&amp;nbsp;I\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial x}{\partial x} =&amp;nbsp;A\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial x^TA}{\partial x} =&amp;nbsp;A^T\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial au(x)}{\partial x} = a\frac{\partial u}{\partial&amp;nbsp;x}\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Scalar-by-Vector&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial a^Tx}{\partial x} =&amp;nbsp;a^T\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial u^Tv}{\partial x} = u^T\frac{\partial v}{\partial x} + v^T\frac{\partial u}{\partial&amp;nbsp;x}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial u^TAv}{\partial x} = u^TA\frac{\partial v}{\partial x} + v^TA^T\frac{\partial u}{\partial&amp;nbsp;x}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial x^TAx}{\partial x} = x^T(A^T +&amp;nbsp;A)\)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Matrix_calculus"&gt;Matrix&amp;nbsp;calculas&lt;/a&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Math"></category><category term="matrix"></category><category term="calculus"></category></entry><entry><title>统计推断复习</title><link href="/tong-ji-tui-duan-fu-xi.html" rel="alternate"></link><published>2018-10-14T20:52:00+08:00</published><updated>2018-10-14T20:52:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/tong-ji-tui-duan-fu-xi.html</id><summary type="html">&lt;h3&gt;总体&lt;/h3&gt;
+&lt;p&gt;所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员 …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;总体&lt;/h3&gt;
+&lt;p&gt;所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员)称为个体。与总体相关的特征值称为参数。&lt;/p&gt;
+&lt;h3&gt;样本&lt;/h3&gt;
+&lt;p&gt;总体的任何一个子集合，称为从总体中抽取的样本。样本中包含个体的数目称为样本容量，通常记为n。因为抽取样本是为了对总体特征进行&lt;em&gt;推断&lt;/em&gt;，所以必须对抽样方法提出一定要求。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;随机性:&amp;nbsp;总体中每个个体被抽到的概率是相等的。&lt;/li&gt;
+&lt;li&gt;独立性: 每次观察X_1, X_2, &amp;#8230; ,&amp;nbsp;X_n是相互独立的随机变量。&lt;/li&gt;
+&lt;li&gt;同分布性:&amp;nbsp;样本与总体同分布。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;满足上述条件的抽样方法称为&lt;em&gt;简单随机抽样&lt;/em&gt;&lt;/p&gt;
+&lt;h3&gt;统计量&lt;/h3&gt;
+&lt;p&gt;如果由样本构造一个函数g(X_1, X_2, &amp;#8230;, X_n), 且不含有任何未知参数，则称g(X_1, X_2, &amp;#8230;,&amp;nbsp;X_n)为统计量。&lt;/p&gt;
+&lt;p&gt;常用的统计量包括:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;样本均值&lt;/li&gt;
+&lt;li&gt;样本方差&lt;/li&gt;
+&lt;li&gt;样本相关系数&lt;/li&gt;
+&lt;li&gt;样本偏度和样本峰度&lt;/li&gt;
+&lt;li&gt;样本变异系数&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Math"></category><category term="statistics"></category></entry></feed>

@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/custom.css">
+
+  <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+
+
+  <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Beta's Note Atom">
+
+
+
+ 
+
+<meta name="author" content="sjtuzbx" />
+<meta name="description" content="vector 插入push_back(), 时间复杂度O(1) 删除erase(iterator position), 时间复杂度O(n)取决于删除的位 …" />
+<meta name="keywords" content="c++, stl">
+
+
+  <meta property="og:site_name" content="Beta's Note"/>
+  <meta property="og:title" content="C++ STL常用数据结构整理"/>
+  <meta property="og:description" content="vector 插入push_back(), 时间复杂度O(1) 删除erase(iterator position), 时间复杂度O(n)取决于删除的位 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="/c-stlchang-yong-shu-ju-jie-gou-zheng-li.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2018-10-07 20:21:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="/author/sjtuzbx.html">
+  <meta property="article:section" content="Programming"/>
+  <meta property="article:tag" content="c++"/>
+  <meta property="article:tag" content="stl"/>
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
+
+  <title>Beta's Note &ndash; C++ STL常用数据结构整理</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="/">
+      <img src="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4" alt="Beta's Note" title="Beta's Note">
+    </a>
+
+    <h1>
+      <a href="/">Beta's Note</a>
+    </h1>
+
+    <p>work hard, keep steady</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="b" >a</a>
+          </li>
+          <li>
+            <a target="_self" href="d" >c</a>
+          </li>
+      </ul>
+    </nav>
+
+  </div>
+
+</aside>
+  <main>
+
+<nav>
+  <a href="/">Home</a>
+
+
+  <a href="/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="c-stlchang-yong-shu-ju-jie-gou-zheng-li">C++&nbsp;STL常用数据结构整理</h1>
+    <p>
+      Posted on Sun 07 October 2018 in <a href="/category/programming.html">Programming</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ol>
+<li>vector<ul>
+<li>插入push_back(),&nbsp;时间复杂度O(1)</li>
+<li>删除erase(iterator position),&nbsp;时间复杂度O(n)取决于删除的位置</li>
+<li>支持随机访问</li>
+</ul>
+</li>
+<li>stack<ul>
+<li>插入push(),&nbsp;时间复杂度O(1)</li>
+<li>删除pop(),&nbsp;时间复杂度O(1)</li>
+<li>不支持随机访问</li>
+</ul>
+</li>
+<li>queue<ul>
+<li>插入push(),&nbsp;时间复杂度O(1)</li>
+<li>删除pop(),&nbsp;时间复杂度O(1)</li>
+<li>不支持随机访问</li>
+</ul>
+</li>
+<li>list(双向链表)<ul>
+<li>插入push_front(), push_back(),&nbsp;时间复杂度O(1)</li>
+<li>删除pop_front(), pop_back(), erase(iterator position),&nbsp;时间复杂度O(1)</li>
+<li>不支持随机访问</li>
+</ul>
+</li>
+<li>forward_list(单链表)<ul>
+<li>插入push_front(), insert_after(),&nbsp;时间复杂度O(1)</li>
+<li>删除pop_front(), erase_after(),&nbsp;时间复杂度O(1)</li>
+<li>不支持随机访问</li>
+</ul>
+</li>
+<li>deque(双端队列)<ul>
+<li>插入push_front(), push_back(),&nbsp;时间复杂度O(1)</li>
+<li>删除push_back(), pop_back(),&nbsp;时间复杂度O(1)</li>
+<li>支持随机访问</li>
+<li>相对于list,&nbsp;deque在中间位置插入速读较慢</li>
+</ul>
+</li>
+<li>priority_queue(优先级队列)<ul>
+<li>插入push(),&nbsp;时间复杂度O(log(n))</li>
+<li>删除pop(),&nbsp;时间复杂度O(log(n))</li>
+<li>内部实现支持随机访问，但是优先级队列不支持</li>
+</ul>
+</li>
+<li>set(集合)<ul>
+<li>利用二叉搜索树实现</li>
+<li>插入insert(), 时间复杂度O(log(n)),&nbsp;如果给出插入位置则时间复杂度为O(1)</li>
+<li>删除erase(position), 时间复杂度O(1); erase(val),&nbsp;时间复杂度O(log(n))</li>
+<li>搜索find(),&nbsp;时间复杂度O(log(n))</li>
+<li>支持lower_bound(), upper_bound(),&nbsp;equal_range()操作</li>
+</ul>
+</li>
+<li>unordered_set<ul>
+<li>利用哈希表实现</li>
+<li>插入insert(),&nbsp;时间复杂度平均情况O(1)，最坏情况O(n)</li>
+<li>删除erase(), 时间复杂度平均情况O(1),&nbsp;最坏情况O(n)</li>
+<li>搜索find(), 时间复杂度平均情况O(1),&nbsp;最坏情况O(n)</li>
+<li>不支持lower_bound(),&nbsp;upper_bound()操作</li>
+</ul>
+</li>
+<li>multiset<ul>
+<li>能包括多个有相同值的元素</li>
+<li>利用二叉搜索树实现</li>
+<li>插入insert(), 时间复杂度O(log(n)),&nbsp;如果给出插入位置则时间复杂度为O(1)</li>
+<li>删除erase(position), 时间复杂度O(1); erase(val),&nbsp;时间复杂度O(log(n))</li>
+<li>搜索find(),&nbsp;时间复杂度O(log(n))</li>
+<li>支持lower_bound(), upper_bound(),&nbsp;equal_range()操作</li>
+</ul>
+</li>
+<li>unordered_multiset<ul>
+<li>能包括多个有相同值的元素</li>
+<li>利用哈希表实现</li>
+<li>插入insert(),&nbsp;时间复杂度平均情况O(1)，最坏情况O(n)</li>
+<li>删除erase(), 时间复杂度平均情况O(1),&nbsp;最坏情况O(n)</li>
+<li>搜索find(), 时间复杂度平均情况O(1),&nbsp;最坏情况O(n)</li>
+<li>不支持lower_bound(),&nbsp;upper_bound()操作</li>
+</ul>
+</li>
+<li>map<ul>
+<li>利用二叉搜索树实现</li>
+<li>插入insert(), 时间复杂度O(log(n)),&nbsp;如果给出插入位置则时间复杂度为O(1)</li>
+<li>删除erase(position), 时间复杂度O(1); erase(val),&nbsp;时间复杂度O(log(n))</li>
+<li>搜索find(),&nbsp;时间复杂度O(log(n))</li>
+<li>支持lower_bound(), upper_bound(),&nbsp;equal_range()操作</li>
+<li>key-value对，支持[]访问</li>
+</ul>
+</li>
+<li>unordered_map<ul>
+<li>利用哈希表实现</li>
+<li>插入insert(),&nbsp;时间复杂度平均情况O(1)，最坏情况O(n)</li>
+<li>删除erase(), 时间复杂度平均情况O(1),&nbsp;最坏情况O(n)</li>
+<li>搜索find(), 时间复杂度平均情况O(1),&nbsp;最坏情况O(n)</li>
+<li>不支持lower_bound(),&nbsp;upper_bound()操作</li>
+<li>key-value对，支持[]访问</li>
+</ul>
+</li>
+<li>multimap<ul>
+<li>能包括多个有相同值的元素</li>
+<li>利用二叉搜索树实现</li>
+<li>插入insert(), 时间复杂度O(log(n)),&nbsp;如果给出插入位置则时间复杂度为O(1)</li>
+<li>删除erase(position), 时间复杂度O(1); erase(val),&nbsp;时间复杂度O(log(n))</li>
+<li>搜索find(),&nbsp;时间复杂度O(log(n))</li>
+<li>支持lower_bound(), upper_bound(),&nbsp;equal_range()操作</li>
+<li>key-value对，不支持[]访问</li>
+</ul>
+</li>
+<li>unordered_multimap<ul>
+<li>能包括多个有相同值的元素</li>
+<li>利用哈希表实现</li>
+<li>插入insert(),&nbsp;时间复杂度平均情况O(1)，最坏情况O(n)</li>
+<li>删除erase(), 时间复杂度平均情况O(1),&nbsp;最坏情况O(n)</li>
+<li>搜索find(), 时间复杂度平均情况O(1),&nbsp;最坏情况O(n)</li>
+<li>不支持lower_bound(),&nbsp;upper_bound()操作</li>
+<li>key-value对，不支持[]访问</li>
+</ul>
+</li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/c.html">c++</a>
+      <a href="/tag/stl.html">stl</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Beta's Note ",
+  "url" : "",
+  "image": "https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4",
+  "description": ""
+}
+</script>
+</body>
+</html>

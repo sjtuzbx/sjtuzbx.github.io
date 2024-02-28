@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/custom.css">
+
+  <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+
+
+  <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Beta's Note Atom">
+
+
+
+ 
+
+<meta name="author" content="sjtuzbx" />
+<meta name="description" content="Solution 输入ctrl + shift + P 打开命令面板搜索 Open User Settings - Open settings.json 添加&#34;editor.fontFamily&#34;: &#34;&#39;Ubuntu Mono&#39;, monospace&#34;即可 VS …" />
+<meta name="keywords" content="vscode">
+
+
+  <meta property="og:site_name" content="Beta's Note"/>
+  <meta property="og:title" content="解决VS Code在ubuntu下terminal无法显示下划线的问题"/>
+  <meta property="og:description" content="Solution 输入ctrl + shift + P 打开命令面板搜索 Open User Settings - Open settings.json 添加&#34;editor.fontFamily&#34;: &#34;&#39;Ubuntu Mono&#39;, monospace&#34;即可 VS …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="/jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2018-10-07 20:47:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="/author/sjtuzbx.html">
+  <meta property="article:section" content="Configuration"/>
+  <meta property="article:tag" content="vscode"/>
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
+
+  <title>Beta's Note &ndash; 解决VS Code在ubuntu下terminal无法显示下划线的问题</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="/">
+      <img src="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4" alt="Beta's Note" title="Beta's Note">
+    </a>
+
+    <h1>
+      <a href="/">Beta's Note</a>
+    </h1>
+
+    <p>work hard, keep steady</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="b" >a</a>
+          </li>
+          <li>
+            <a target="_self" href="d" >c</a>
+          </li>
+      </ul>
+    </nav>
+
+  </div>
+
+</aside>
+  <main>
+
+<nav>
+  <a href="/">Home</a>
+
+
+  <a href="/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti">解决VS&nbsp;Code在ubuntu下terminal无法显示下划线的问题</h1>
+    <p>
+      Posted on Sun 07 October 2018 in <a href="/category/configuration.html">Configuration</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h3>Solution</h3>
+<p>输入<code>ctrl + shift + P</code> 打开命令面板搜索 <code>Open User Settings</code> - <code>Open settings.json</code></p>
+<p>添加<code>"editor.fontFamily": "'Ubuntu Mono', monospace"</code>即可</p>
+<h3><span class="caps">VS</span>&nbsp;Code显示数学公式</h3>
+<p>输入<code>ctrl + shift + X</code>搜索<strong> Markdown+Math </strong>安装即可。一共有4种形式的texmath语法，我们可以按照自己的需求选择,可以通过下列代码修改</p>
+<div class="highlight"><pre><span></span><code>&quot;mdmath.delimiters&quot;: &quot;dollars&quot; // 这里输入你需要的语法
+</code></pre></div>
+
+<h3>Reference</h3>
+<p><a href="https://github.com/Microsoft/vscode/issues/38133">https://github.com/Microsoft/vscode/issues/38133</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/vscode.html">vscode</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Beta's Note ",
+  "url" : "",
+  "image": "https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4",
+  "description": ""
+}
+</script>
+</body>
+</html>

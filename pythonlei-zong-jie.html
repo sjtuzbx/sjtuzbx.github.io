@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/custom.css">
+
+  <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+
+
+  <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Beta's Note Atom">
+
+
+
+ 
+
+<meta name="author" content="sjtuzbx" />
+<meta name="description" content="Class 类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保 …" />
+<meta name="keywords" content="python">
+
+
+  <meta property="og:site_name" content="Beta's Note"/>
+  <meta property="og:title" content="Python类总结"/>
+  <meta property="og:description" content="Class 类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保 …"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="/pythonlei-zong-jie.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2018-10-21 13:52:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="/author/sjtuzbx.html">
+  <meta property="article:section" content="Programming"/>
+  <meta property="article:tag" content="python"/>
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
+
+  <title>Beta's Note &ndash; Python类总结</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="/">
+      <img src="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4" alt="Beta's Note" title="Beta's Note">
+    </a>
+
+    <h1>
+      <a href="/">Beta's Note</a>
+    </h1>
+
+    <p>work hard, keep steady</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="b" >a</a>
+          </li>
+          <li>
+            <a target="_self" href="d" >c</a>
+          </li>
+      </ul>
+    </nav>
+
+  </div>
+
+</aside>
+  <main>
+
+<nav>
+  <a href="/">Home</a>
+
+
+  <a href="/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="pythonlei-zong-jie">Python类总结</h1>
+    <p>
+      Posted on Sun 21 October 2018 in <a href="/category/programming.html">Programming</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h2>Class</h2>
+<p>类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保持各自的状态，类实例有类方法来修改类状态。</p>
+<h3>Namespace and&nbsp;Scope</h3>
+<p>namespace(命名空间)是变量名到对象的映射，Python中的命名空间包括：the set of built-in names, global names in a module and the local names in a function invocation.&nbsp;不同命名空间中定义的变量名是没有关系的</p>
+<p>By the way, I use the word <strong>attribute</strong> for any name following a dot — for example, in the expression z.real, real is an attribute of the object&nbsp;z.</p>
+<p>不同命名空间创建时间和生命周期不同，包含built-in&nbsp;names的命名空间在Python解释器启动时建立，并且永远不会被删除。模块的全局命名空间当模块定义被读入时创建，函数内的命令空间在函数被调用时创建，函数执行结束时销毁。</p>
+<p>scope(作用域)是命名空间能被直接访问的部分，包括:</p>
+<ul>
+<li>the innermost scope, which is searched first, contains the local&nbsp;names</li>
+<li>the scopes of any enclosing functions, which are searched starting with the nearest enclosing scope, contains non-local, but also non-global&nbsp;names</li>
+<li>the next-to-last scope contains the current module’s global&nbsp;names</li>
+<li>the outermost scope (searched last) is the namespace containing built-in&nbsp;names</li>
+</ul>
+<p>这里要区分<em>global</em>, <em>nonlocal</em>之间的差异，如果一个变量被声明为<em>global</em>,则直接对该变量的所有引用和赋值发生在模块的global names作用域中。如果一个变量被声明为nonlocal,&nbsp;则表示该变量在嵌套的作用域中。其他情况下，同名变量是只读的，如果对同名变量写入，则为该变量创建一个新的局部变量</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">scope_test</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">do_local</span><span class="p">():</span>
+        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&quot;local spam&quot;</span>
+
+    <span class="k">def</span> <span class="nf">do_nonlocal</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">spam</span>
+        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&quot;nonlocal spam&quot;</span>
+
+    <span class="k">def</span> <span class="nf">do_global</span><span class="p">():</span>
+        <span class="k">global</span> <span class="n">spam</span>
+        <span class="n">spam</span> <span class="o">=</span> <span class="s2">&quot;global spam&quot;</span>
+
+    <span class="n">spam</span> <span class="o">=</span> <span class="s2">&quot;test spam&quot;</span>
+    <span class="n">do_local</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After local assignment:&quot;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
+    <span class="n">do_nonlocal</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After nonlocal assignment:&quot;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
+    <span class="n">do_global</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After global assignment:&quot;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
+
+<span class="n">scope_test</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In global scope:&quot;</span><span class="p">,</span> <span class="n">spam</span><span class="p">)</span>
+</code></pre></div>
+
+<p>输出结果是:</p>
+<div class="highlight"><pre><span></span><code><span class="n">After</span> <span class="n">local</span> <span class="n">assignment</span><span class="p">:</span> <span class="n">test</span> <span class="n">spam</span>
+<span class="n">After</span> <span class="k">nonlocal</span> <span class="n">assignment</span><span class="p">:</span> <span class="k">nonlocal</span> <span class="n">spam</span>
+<span class="n">After</span> <span class="k">global</span> <span class="n">assignment</span><span class="p">:</span> <span class="k">nonlocal</span> <span class="n">spam</span>
+<span class="n">In</span> <span class="k">global</span> <span class="n">scope</span><span class="p">:</span> <span class="k">global</span> <span class="n">spam</span>
+</code></pre></div>
+
+<h3>Class definition&nbsp;syntax</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ClassName</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="n">N</span><span class="o">&gt;</span>
+</code></pre></div>
+
+<h3>Class&nbsp;object</h3>
+<p>类对象支持两种类型的操作:attribute references and instantiation. 
+* attribute references通过.运算符实现，obj.attribute
+* 实例化通过<code>x = MyClass()</code>实现</p>
+<h3>Instance&nbsp;object</h3>
+<p>The only operations understood by instance objects are attribute references. There are two kinds of valid attribute names, <em>data attributes</em> and <em>methods</em>.</p>
+<p>### Class and Instance&nbsp;Variables</p>
+<p>实例变量是各个实例独有的，而类变量是该类的所有实例所共有的</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
+
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canine&#39;</span>         <span class="c1"># class variable shared by all instances</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>    <span class="c1"># instance variable unique to each instance</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Fido&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s1">&#39;Buddy&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">kind</span>                  <span class="c1"># shared by all dogs</span>
+<span class="s1">&#39;canine&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">kind</span>                  <span class="c1"># shared by all dogs</span>
+<span class="s1">&#39;canine&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="o">.</span><span class="n">name</span>                  <span class="c1"># unique to d</span>
+<span class="s1">&#39;Fido&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">name</span>                  <span class="c1"># unique to e</span>
+<span class="s1">&#39;Buddy&#39;</span>
+</code></pre></div>
+
+<p>###&nbsp;Inheritance</p>
+<p><code>python
+class DerivedClassName(BaseClassName):
+    &lt;statement-1&gt;
+    .
+    .
+    .
+    &lt;statement-N&gt;</code></p>
+<p>There’s nothing special about instantiation of derived classes: DerivedClassName() creates a new instance of the class. Method references are resolved as follows: the corresponding class attribute is searched, descending down the chain of base classes if necessary, and the method reference is valid if this yields a function&nbsp;object.</p>
+<p>Derived classes may override methods of their base classes. Because methods have no special privileges when calling other methods of the same object, a method of a base class that calls another method defined in the same base class may end up calling a method of a derived class that overrides it. (For C++ programmers: all methods in Python are effectively&nbsp;virtual.)</p>
+<p>An overriding method in a derived class may in fact want to extend rather than simply replace the base class method of the same name. There is a simple way to call the base class method directly: just call BaseClassName.methodname(self, arguments). This is occasionally useful to clients as well. (Note that this only works if the base class is accessible as BaseClassName in the global&nbsp;scope.)</p>
+<p>Python has two built-in functions that work with&nbsp;inheritance:</p>
+<p>Use isinstance() to check an instance’s type: isinstance(obj, int) will be True only if obj.<strong>class</strong> is int or some class derived from int.
+Use issubclass() to check class inheritance: issubclass(bool, int) is True since bool is a subclass of int. However, issubclass(float, int) is False since float is not a subclass of&nbsp;int.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/python.html">python</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Beta's Note ",
+  "url" : "",
+  "image": "https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4",
+  "description": ""
+}
+</script>
+</body>
+</html>
