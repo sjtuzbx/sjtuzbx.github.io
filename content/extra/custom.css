@@ -1,0 +1,272 @@
+/* This is custom css style for Flex by setting CUSTOM_CSS in pelicanconf.py */
+body {
+  font-size: 1.02em;
+  line-height: 1.8em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-weight: 600;
+line-height: 1.1;
+}
+
+h1{
+font-size: 1.8em
+}
+
+h2 {
+font-size: 1.52em
+}
+
+h3 {
+font-size: 1.36em
+}
+
+h4 {
+font-size: 1.2em
+}
+
+h5 {
+font-size: 1.1em
+}
+
+h6 {
+font-size: 1.08em
+}
+
+/* 調整左半邊區塊的顏色 */
+aside {
+background-color: #304054;
+color: #ffffff;
+text-align: center;
+}
+
+/* Menu Items 使用 */
+aside ul.list {
+  padding: 1em 0 1em 0;
+  font-size: 0.8em;
+}
+
+aside section#sidebar_tags {
+padding: 0em 0em;
+}
+
+aside section#sidebar_tags dl {
+padding: 1em 0em 0em 0em;
+margin: 0em;
+font-size: 1.0em;
+}
+
+aside section#sidebar_tags dt {
+display: inline;
+}
+
+aside section#sidebar_tags a {
+font-size: 0.8em;
+background-color: #ff5555c7;
+color: #ffffff;
+border-radius: 6px;
+display: inline-block;
+white-space: pre-wrap;
+margin: 0.2em 0.1em 0.2em 0.1em;
+padding: 0em 0.4em 0em 0.4em;
+
+}
+
+aside section#sidebar_tags a#tags_mores {
+color: #ff5555ee;
+font-weight: 600;
+background-color: initial;
+font-size: 0.9em;
+display: inline-block;
+white-space: pre-wrap;
+margin: 0.2em 0.1em 0.2em 0.0em;
+padding: 0em 0.4em 0em 0.2em;
+}
+
+aside div ul.social {
+font-size: 1.6em;
+padding-top: 0px;
+padding-bottom: 20px;
+}
+
+
+/* 調整上面 Navbar 文字大小 */
+main nav {
+text-align: center;
+text-transform: uppercase;
+/* font-family: 'Source Sans Pro','Roboto','Open Sans','Liberation Sans','DejaVu Sans','Verdana','Helvetica','Arial',sans-serif; */
+font-weight: 600;
+font-size: 1.05em;
+padding: 14px 0 14px 0;
+border-bottom: #eeeeee 1px solid;
+}
+
+/* 調整上面 Navbar 中的文字顏色 */
+main nav a {
+padding: 0 4px 0 4px;
+border-left: #eeeeee 1px solid;
+border-right: #eeeeee 1px solid;
+color: rgba(48, 47, 47, 0.8);
+}
+
+
+/* 調整單行指令區塊的寬度、大小與換行處理 */
+main article *:not(pre)>code {
+font-size: .9em;
+/* 使 code block 沒有一塊區塊 */
+display: contents;
+/* 使 code block 能換行 */
+white-space: pre-wrap;
+margin: .2em;
+/* Below css inherit origin style.min.css */
+/* color: #c25; */
+/* padding: 1px 3px;
+background-color: #f7f7f9;
+border: 1px solid #e1e1e8;
+border-radius: 3px; */
+}
+
+
+/* 調整引言的文字區塊 */
+main article blockquote {
+padding: 1px 20px;
+font-weight: 500;
+font-size: 1.1em;
+}
+
+
+/* 調整引言的文字區塊 */
+main article dl#tags {
+padding: 1em 0em 1em 0em;
+font-size: 1.0em;
+}
+main article dl#tags dt {
+display: inline;
+}
+
+main article dl#tags a {
+font-size: 0.9em;
+background-color: #f52e2e;
+color: #ffffff;
+border-radius: 6px;
+display: inline-block;
+white-space: pre-wrap;
+margin: 0.2em 0.1em 0.2em 0.1em;
+padding: 0em 0.4em 0em 0.4em;
+}
+
+/* 調整文章的圖片置中 */
+/* main article p img {
+margin: auto;
+display: block;
+width: 70%;
+} */
+
+/* Media Query ，也就是當寬度 > 768 px 時將載入下面這段 CSS : */
+@media only screen and (min-width: 768px) {
+
+aside div ul.social {
+  font-size: 1.6em;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+/* 調整文章的圖片置中 */
+main article p img {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+}
+}
+
+/* Media Query ，也就是當 481px < 寬度 < 768px 時將載入下面這段 CSS : */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+/* 調整文章的圖片置中 */
+main article p img {
+  margin: auto;
+  display: block;
+  max-width: 85%;
+}
+
+aside div ul.social {
+font-size: 1.6em;
+padding-top: 0px;
+padding-bottom: 20px;
+}
+
+/* 調整單行指令區塊的寬度、大小與換行處理 */
+main article *:not(pre)>code {
+  font-size: .9em;
+  /* 使 code block 沒有一塊區塊 */
+  display: contents;
+  /* 使 code block 能換行 */
+  white-space: pre-wrap;
+  margin: .2em;
+  /* Below css inherit origin style.min.css */
+  /* color: #c25;
+  padding: 1px 3px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 3px; */
+}
+}
+
+
+/* Media Query ，也就是當寬度 < 480 px 時將載入下面這段 CSS : */
+@media only screen and (max-width: 480px) {
+/* 調整文章的圖片置中 */
+main article p img {
+  margin: auto;
+  display: block;
+}
+
+aside div ul.social {
+font-size: 1.6em;
+padding-top: 0px;
+padding-bottom: 20px;
+}
+
+
+main nav {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.05em;
+  padding: 14px 0 14px 0;
+  border-bottom: #eeeeee 1px solid;
+  /* 使 nav 的左右 margin 較寬 */
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+main nav a {
+  /* inline-block - 使每一個 a 區塊為單位換行（不會有 a 的文字被切字） */
+  display: inline-block;
+  padding: 0 4px 0 4px;
+  border-left: #eeeeee 1px solid;
+  border-right: #eeeeee 1px solid;
+  color: rgba(48, 47, 47, 0.8);
+}
+
+/* 調整單行指令區塊的寬度、大小與換行處理 */
+main article *:not(pre)>code {
+  font-size: .9em;
+  margin: .2em;
+  /* 使 code block 沒有一塊區塊 */
+  display: contents;
+  /* 使 code block 能換行 */
+  white-space: pre-wrap;
+  /* Below css inherit origin style.min.css */
+  /* color: #c25; */
+  /* padding: 1px 3px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 3px; */
+  
+}
+}
