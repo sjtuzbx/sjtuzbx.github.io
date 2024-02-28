@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -60,7 +60,20 @@
       <a href="/">Beta's Note</a>
     </h1>
 
-    <p>work hard, keep steady</p>
+    <p>一个想找工作的Coder/c++/Python/ai</p>
+
+
+
+    <section id=sidebar_tags>
+      <dl>
+        <dt><a href="/tag/aigc"> aigc (1)</a></dt>
+        <dt><a href="/tag/tool"> tool (6)</a></dt>
+        <dt><a href="/tag/programing"> programing (5)</a></dt>
+        <dt><a href="/tag/math"> math (3)</a></dt>
+        <dt><a href="/tag/algorithm"> algorithm (1)</a></dt>
+        <dt><a id="tags_mores" href='/tags.html'>...more</a></dt>
+      </dl>
+    </section>
 
 
     <nav>
@@ -69,14 +82,20 @@
 
 
           <li>
-            <a target="_self" href="b" >a</a>
-          </li>
-          <li>
-            <a target="_self" href="d" >c</a>
+            <a target="_self" href="/archives.html" >文章列表</a>
           </li>
       </ul>
     </nav>
 
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/sjtuzbx"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+    </ul>
   </div>
 
 </aside>
@@ -85,6 +104,7 @@
 <nav>
   <a href="/">Home</a>
 
+  <a href="/archives.html">文章列表</a>
 
   <a href="/feeds/all.atom.xml">Atom</a>
 
@@ -99,75 +119,11 @@
       Posted on Sat 20 October 2018 in <a href="/category/math.html">Math</a>
 
           &#8226; Tagged with
-              <a href="/tag/matrix.html">matrix</a>
+              <a href="/tag/math.html">math</a>
     </p>
   </header>
   <div>
-      <div><h2>一些有用的结论</h2>
-<ul>
-<li>实对称阵可以正交对角化</li>
-<li>特征值 <span class="math">\(\lambda_i\)</span>的几何重数是<span class="math">\((\lambda I-A …</span></li></ul><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+      <div><p>一些有用的结论:&nbsp;实对称阵可以正交对角化</p></div>
         <br>
         <a class="btn"
            href="/ju-zhen-fu-xi.html#ju-zhen-fu-xi">
@@ -183,7 +139,7 @@
       Posted on Sat 20 October 2018 in <a href="/category/math.html">Math</a>
 
           &#8226; Tagged with
-              <a href="/tag/matrix.html">matrix</a>,              <a href="/tag/calculus.html">calculus</a>
+              <a href="/tag/math.html">math</a>
     </p>
   </header>
   <div>
@@ -203,12 +159,11 @@
       Posted on Sun 14 October 2018 in <a href="/category/math.html">Math</a>
 
           &#8226; Tagged with
-              <a href="/tag/statistics.html">statistics</a>
+              <a href="/tag/math.html">math</a>
     </p>
   </header>
   <div>
-      <div><h3>总体</h3>
-<p>所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员 …</p></div>
+      <div><p>统计推断,&nbsp;总体是所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员)称为个体。与总体相关的特征值称为参数。</p></div>
         <br>
         <a class="btn"
            href="/tong-ji-tui-duan-fu-xi.html#tong-ji-tui-duan-fu-xi">

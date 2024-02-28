@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -35,21 +35,21 @@
  
 
 <meta name="author" content="sjtuzbx" />
-<meta name="description" content="首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概 …" />
-<meta name="keywords" content="git">
+<meta name="description" content="首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add filename指令后)" />
+<meta name="keywords" content="tool">
 
 
   <meta property="og:site_name" content="Beta's Note"/>
   <meta property="og:title" content="Git命令整理"/>
-  <meta property="og:description" content="首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概 …"/>
+  <meta property="og:description" content="首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add filename指令后)"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:url" content="/gitming-ling-zheng-li.html"/>
   <meta property="og:type" content="article"/>
   <meta property="article:published_time" content="2018-10-14 15:31:00+08:00"/>
   <meta property="article:modified_time" content=""/>
   <meta property="article:author" content="/author/sjtuzbx.html">
-  <meta property="article:section" content="Programming"/>
-  <meta property="article:tag" content="git"/>
+  <meta property="article:section" content="programming"/>
+  <meta property="article:tag" content="tool"/>
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
 
   <title>Beta's Note &ndash; Git命令整理</title>
@@ -68,7 +68,20 @@
       <a href="/">Beta's Note</a>
     </h1>
 
-    <p>work hard, keep steady</p>
+    <p>一个想找工作的Coder/c++/Python/ai</p>
+
+
+
+    <section id=sidebar_tags>
+      <dl>
+        <dt><a href="/tag/aigc"> aigc (1)</a></dt>
+        <dt><a href="/tag/tool"> tool (6)</a></dt>
+        <dt><a href="/tag/programing"> programing (5)</a></dt>
+        <dt><a href="/tag/math"> math (3)</a></dt>
+        <dt><a href="/tag/algorithm"> algorithm (1)</a></dt>
+        <dt><a id="tags_mores" href='/tags.html'>...more</a></dt>
+      </dl>
+    </section>
 
 
     <nav>
@@ -77,14 +90,20 @@
 
 
           <li>
-            <a target="_self" href="b" >a</a>
-          </li>
-          <li>
-            <a target="_self" href="d" >c</a>
+            <a target="_self" href="/archives.html" >文章列表</a>
           </li>
       </ul>
     </nav>
 
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/sjtuzbx"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+    </ul>
   </div>
 
 </aside>
@@ -93,6 +112,7 @@
 <nav>
   <a href="/">Home</a>
 
+  <a href="/archives.html">文章列表</a>
 
   <a href="/feeds/all.atom.xml">Atom</a>
 
@@ -103,7 +123,7 @@
       
     <h1 id="gitming-ling-zheng-li">Git命令整理</h1>
     <p>
-      Posted on Sun 14 October 2018 in <a href="/category/programming.html">Programming</a>
+      Posted on Sun 14 October 2018 in <a href="/category/programming.html">programming</a>
 
     </p>
   </header>
@@ -286,7 +306,7 @@
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="/tag/git.html">git</a>
+      <a href="/tag/tool.html">tool</a>
     </p>
   </div>
 

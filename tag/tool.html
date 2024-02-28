@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -44,7 +44,7 @@
   <meta property="og:url" content=""/>
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
 
-  <title>Beta's Note &ndash; Tag vscode</title>
+  <title>Beta's Note &ndash; Tag tool</title>
 
 
 </head>
@@ -60,7 +60,20 @@
       <a href="/">Beta's Note</a>
     </h1>
 
-    <p>work hard, keep steady</p>
+    <p>一个想找工作的Coder/c++/Python/ai</p>
+
+
+
+    <section id=sidebar_tags>
+      <dl>
+        <dt><a href="/tag/aigc"> aigc (1)</a></dt>
+        <dt><a href="/tag/tool"> tool (6)</a></dt>
+        <dt><a href="/tag/programing"> programing (5)</a></dt>
+        <dt><a href="/tag/math"> math (3)</a></dt>
+        <dt><a href="/tag/algorithm"> algorithm (1)</a></dt>
+        <dt><a id="tags_mores" href='/tags.html'>...more</a></dt>
+      </dl>
+    </section>
 
 
     <nav>
@@ -69,14 +82,20 @@
 
 
           <li>
-            <a target="_self" href="b" >a</a>
-          </li>
-          <li>
-            <a target="_self" href="d" >c</a>
+            <a target="_self" href="/archives.html" >文章列表</a>
           </li>
       </ul>
     </nav>
 
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/sjtuzbx"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+    </ul>
   </div>
 
 </aside>
@@ -85,6 +104,7 @@
 <nav>
   <a href="/">Home</a>
 
+  <a href="/archives.html">文章列表</a>
 
   <a href="/feeds/all.atom.xml">Atom</a>
 
@@ -94,20 +114,76 @@
 
 <article>
   <header>
+    <h2><a href="/makezong-jie.html#makezong-jie">Make总结</a></h2>
+    <p>
+      Posted on Thu 25 October 2018 in <a href="/category/programming.html">programming</a>
+
+          &#8226; Tagged with
+              <a href="/tag/tool.html">tool</a>
+    </p>
+  </header>
+  <div>
+      <div><p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过<code>make -f rules.txt</code>指定其他文件名.</p></div>
+        <br>
+        <a class="btn"
+           href="/makezong-jie.html#makezong-jie">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/markdownyu-fa-jie-shao.html#markdownyu-fa-jie-shao">Markdown语法介绍</a></h2>
+    <p>
+      Posted on Sun 14 October 2018 in <a href="/category/programming.html">programming</a>
+
+          &#8226; Tagged with
+              <a href="/tag/tool.html">tool</a>
+    </p>
+  </header>
+  <div>
+      <div><p>这篇文章介绍Markdown的语法，包括标题、引用、列表、代码、强调、链接、表格、分割线、图片</p></div>
+        <br>
+        <a class="btn"
+           href="/markdownyu-fa-jie-shao.html#markdownyu-fa-jie-shao">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/gitming-ling-zheng-li.html#gitming-ling-zheng-li">Git命令整理</a></h2>
+    <p>
+      Posted on Sun 14 October 2018 in <a href="/category/programming.html">programming</a>
+
+          &#8226; Tagged with
+              <a href="/tag/tool.html">tool</a>
+    </p>
+  </header>
+  <div>
+      <div><p>首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&nbsp;filename指令后)</p></div>
+        <br>
+        <a class="btn"
+           href="/gitming-ling-zheng-li.html#gitming-ling-zheng-li">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="/vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal.html#vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal"><span class="caps">VS</span> Code使用Anaconda&nbsp;Prompt作为默认terminal</a></h2>
     <p>
       Posted on Sun 07 October 2018 in <a href="/category/configuration.html">Configuration</a>
 
           &#8226; Tagged with
-              <a href="/tag/vscode.html">vscode</a>
+              <a href="/tag/tool.html">tool</a>
     </p>
   </header>
   <div>
-      <div><h3>Solution</h3>
-<p>在你自己的<code>User settings</code>中添加下列代码</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;terminal.integrated.shell.windows&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;C:\\WINDOWS\\System32\\cmd.exe&quot;</span><span class="p">,</span>
-<span class="s2">&quot;terminal.integrated.shellArgs.windows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;/K&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;C …</span></code></pre></div></div>
+      <div><p><span class="caps">VS</span> Code怎么使用使用Anaconda&nbsp;Prompt作为默认terminal</p></div>
         <br>
         <a class="btn"
            href="/vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal.html#vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal">
@@ -120,15 +196,14 @@
   <header>
     <h2><a href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html#li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu">利用VS Code&nbsp;Snippets生成C++头文件保护符</a></h2>
     <p>
-      Posted on Sun 07 October 2018 in <a href="/category/programming.html">Programming</a>
+      Posted on Sun 07 October 2018 in <a href="/category/programming.html">programming</a>
 
           &#8226; Tagged with
-              <a href="/tag/vscode.html">vscode</a>,              <a href="/tag/c.html">c++</a>
+              <a href="/tag/tool.html">tool</a>
     </p>
   </header>
   <div>
-      <div><h3>Solution</h3>
-<p>将下列代码贴入你的<code>snippets</code>中，然后在<code>cpp</code>文件中输入<code>pre</code>+<code>tab</code>即可自动生成相 …</p></div>
+      <div><p>怎么利用VS Code&nbsp;Snippets生成C++头文件保护符</p></div>
         <br>
         <a class="btn"
            href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html#li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu">
@@ -144,14 +219,11 @@
       Posted on Sun 07 October 2018 in <a href="/category/configuration.html">Configuration</a>
 
           &#8226; Tagged with
-              <a href="/tag/vscode.html">vscode</a>
+              <a href="/tag/tool.html">tool</a>
     </p>
   </header>
   <div>
-      <div><h3>Solution</h3>
-<p>输入<code>ctrl + shift + P</code> 打开命令面板搜索 <code>Open User Settings</code> - <code>Open settings.json</code></p>
-<p>添加<code>"editor.fontFamily": "'Ubuntu Mono', monospace"</code>即可</p>
-<h3><span class="caps">VS …</span></h3></div>
+      <div><p>怎么解决VS&nbsp;Code在ubuntu下terminal无法显示下划线的问题</p></div>
         <br>
         <a class="btn"
            href="/jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti.html#jie-jue-vs-codezai-ubuntuxia-terminalwu-fa-xian-shi-xia-hua-xian-de-wen-ti">

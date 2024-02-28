@@ -1,69 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Beta's Note - Math</title><link href="/" rel="alternate"></link><link href="/feeds/math.atom.xml" rel="self"></link><id>/</id><updated>2018-10-20T20:48:00+08:00</updated><subtitle>work hard, keep steady</subtitle><entry><title>矩阵复习</title><link href="/ju-zhen-fu-xi.html" rel="alternate"></link><published>2018-10-20T20:48:00+08:00</published><updated>2018-10-20T20:48:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-20:/ju-zhen-fu-xi.html</id><summary type="html">&lt;h2&gt;一些有用的结论&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;实对称阵可以正交对角化&lt;/li&gt;
-&lt;li&gt;特征值 &lt;span class="math"&gt;\(\lambda_i\)&lt;/span&gt;的几何重数是&lt;span class="math"&gt;\((\lambda I-A …&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width &lt; 768) ? "left" : align;
-        indent = (screen.width &lt; 768) ? "0em" : indent;
-        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;</summary><content type="html">&lt;h2&gt;一些有用的结论&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Beta's Note - Math</title><link href="/" rel="alternate"></link><link href="/feeds/math.atom.xml" rel="self"></link><id>/</id><updated>2018-10-20T20:48:00+08:00</updated><subtitle>一个想找工作的Coder/c++/Python/ai</subtitle><entry><title>矩阵复习</title><link href="/ju-zhen-fu-xi.html" rel="alternate"></link><published>2018-10-20T20:48:00+08:00</published><updated>2018-10-20T20:48:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-20:/ju-zhen-fu-xi.html</id><summary type="html">&lt;p&gt;一些有用的结论:&amp;nbsp;实对称阵可以正交对角化&lt;/p&gt;</summary><content type="html">&lt;h2&gt;一些有用的结论&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;实对称阵可以正交对角化&lt;/li&gt;
 &lt;li&gt;特征值 &lt;span class="math"&gt;\(\lambda_i\)&lt;/span&gt;的几何重数是&lt;span class="math"&gt;\((\lambda I-A)x=0\)&lt;/span&gt;的基础解系的个数&lt;/li&gt;
@@ -153,7 +89,7 @@
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Math"></category><category term="matrix"></category></entry><entry><title>Matrix Calculus</title><link href="/matrix-calculus.html" rel="alternate"></link><published>2018-10-20T16:03:00+08:00</published><updated>2018-10-20T16:03:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-20:/matrix-calculus.html</id><summary type="html">&lt;p&gt;这篇文章总结矩阵微积分中使用的一些公式&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Matrix&amp;nbsp;Calculus&lt;/h2&gt;
+&lt;/script&gt;</content><category term="Math"></category><category term="math"></category></entry><entry><title>Matrix Calculus</title><link href="/matrix-calculus.html" rel="alternate"></link><published>2018-10-20T16:03:00+08:00</published><updated>2018-10-20T16:03:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-20:/matrix-calculus.html</id><summary type="html">&lt;p&gt;这篇文章总结矩阵微积分中使用的一些公式&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Matrix&amp;nbsp;Calculus&lt;/h2&gt;
 &lt;h3&gt;Vector-by-Vector&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;span class="math"&gt;\(\frac{\partial a}{\partial x} =&amp;nbsp;0\)&lt;/span&gt;&lt;/li&gt;
@@ -232,8 +168,7 @@
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Math"></category><category term="matrix"></category><category term="calculus"></category></entry><entry><title>统计推断复习</title><link href="/tong-ji-tui-duan-fu-xi.html" rel="alternate"></link><published>2018-10-14T20:52:00+08:00</published><updated>2018-10-14T20:52:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/tong-ji-tui-duan-fu-xi.html</id><summary type="html">&lt;h3&gt;总体&lt;/h3&gt;
-&lt;p&gt;所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员 …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;总体&lt;/h3&gt;
+&lt;/script&gt;</content><category term="Math"></category><category term="math"></category></entry><entry><title>统计推断复习</title><link href="/tong-ji-tui-duan-fu-xi.html" rel="alternate"></link><published>2018-10-14T20:52:00+08:00</published><updated>2018-10-14T20:52:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/tong-ji-tui-duan-fu-xi.html</id><summary type="html">&lt;p&gt;统计推断,&amp;nbsp;总体是所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员)称为个体。与总体相关的特征值称为参数。&lt;/p&gt;</summary><content type="html">&lt;h3&gt;总体&lt;/h3&gt;
 &lt;p&gt;所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员)称为个体。与总体相关的特征值称为参数。&lt;/p&gt;
 &lt;h3&gt;样本&lt;/h3&gt;
 &lt;p&gt;总体的任何一个子集合，称为从总体中抽取的样本。样本中包含个体的数目称为样本容量，通常记为n。因为抽取样本是为了对总体特征进行&lt;em&gt;推断&lt;/em&gt;，所以必须对抽样方法提出一定要求。&lt;/p&gt;
@@ -252,4 +187,4 @@
 &lt;li&gt;样本相关系数&lt;/li&gt;
 &lt;li&gt;样本偏度和样本峰度&lt;/li&gt;
 &lt;li&gt;样本变异系数&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Math"></category><category term="statistics"></category></entry></feed>
+&lt;/ul&gt;</content><category term="Math"></category><category term="math"></category></entry></feed>

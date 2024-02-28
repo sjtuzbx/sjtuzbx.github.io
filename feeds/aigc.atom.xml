@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Beta's Note - aigc</title><link href="/" rel="alternate"></link><link href="/feeds/aigc.atom.xml" rel="self"></link><id>/</id><updated>2024-02-26T09:00:00+08:00</updated><subtitle>一个想找工作的Coder/c++/Python/ai</subtitle><entry><title>一个简单的聊天机器人 - “AI 巴菲特”</title><link href="/yi-ge-jian-dan-de-liao-tian-ji-qi-ren-ai-ba-fei-te.html" rel="alternate"></link><published>2024-02-26T09:00:00+08:00</published><updated>2024-02-26T09:00:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2024-02-26:/yi-ge-jian-dan-de-liao-tian-ji-qi-ren-ai-ba-fei-te.html</id><summary type="html">&lt;p&gt;使用&lt;a href="https://www.coze.com/"&gt;coze&lt;/a&gt;搭建一个简单的聊天机器人 - &lt;a href="https://www.coze.com/store/bot/7340085355959549960"&gt;&lt;span class="caps"&gt;AI&lt;/span&gt;&amp;nbsp;巴菲特&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;随着去年ChatGPT的横空出世，越来越多的人工智能应用涌现了出来。最近就试着捣鼓了一个简单的基于&lt;code&gt;gtp-4&lt;/code&gt;的大语言模型。操作起来还是很简单和有趣的，喜欢的朋友都可以去试试。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="display" src="images/ai-buffet.jpg"&gt;&lt;/p&gt;
+&lt;h2&gt;配置方法&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;点击网站侧边栏&lt;code&gt;Create bot&lt;/code&gt;. 输入&lt;code&gt;Bot name&lt;/code&gt;, &lt;code&gt;Bot description&lt;/code&gt;和上传&lt;code&gt;Bot&lt;/code&gt;的头像&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在如下图所示的配置页面，左侧&lt;code&gt;Persona &amp;amp; Prompt&lt;/code&gt;下输入&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;# 角色
+你就是股神沃伦·巴菲特本人。你擅长以亲切的方式分享你的投资理念，并提供你的投资建议。你的金融智慧和深沉的投资洞见对你的跟随者们有着深远的影响。
+
+## 技能
+### 技能1：分享投资理念
+- 理解用户提出的问题或疑惑。
+- 根据你的投资哲学和经验，提供适当的解答。
+- 使用类似以下的回答格式：
+=====
+   -  💡 投资理念: &amp;lt;巴菲特式的投资观点&amp;gt;
+=====
+
+### 技能2：提供投资建议
+- 根据用户的具体投资问题，提供贴切的建议。
+- 提出预防陷阱和风险的措施。
+- 以类似以下的方式提出建议：
+=====
+   -  💡 投资建议: &amp;lt;巴菲特式的投资建议&amp;gt;
+=====
+
+## 约束条件
+- 只讨论与投资有关的问题。
+- 坚持使用提供的输出格式。
+- 严格遵循巴菲特的投资理念。
+- 确保你的回答始终是建设性和教育性的。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img alt="config" src="images/ai-buffet-configuration.jpg"&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在右侧&lt;code&gt;preview&lt;/code&gt;栏下可以实时调试。调试完成后点击&lt;code&gt;publish&lt;/code&gt;即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Tips&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;你可以在&lt;code&gt;Persona &amp;amp; Prompt&lt;/code&gt;用自然语言进行描述，然后点击上方的&lt;code&gt;Optimize&lt;/code&gt;按钮。它会自动帮你生成格式规范的&lt;code&gt;prompt&lt;/code&gt;，然后我们可以在此基础上进行微调。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在&lt;code&gt;Skills&lt;/code&gt;栏目下可以添加各类插件、变量、额外的知识库，对ai机器人进行更个性的设定，之后的文章再详细研究啦。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="aigc"></category><category term="aigc"></category></entry></feed>

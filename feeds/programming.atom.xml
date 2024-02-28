@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Beta's Note - Programming</title><link href="/" rel="alternate"></link><link href="/feeds/programming.atom.xml" rel="self"></link><id>/</id><updated>2024-02-28T14:33:00+08:00</updated><subtitle>work hard, keep steady</subtitle><entry><title>Make总结</title><link href="/makezong-jie.html" rel="alternate"></link><published>2024-02-28T14:33:00+08:00</published><updated>2024-02-28T14:33:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2024-02-28:/makezong-jie.html</id><summary type="html">&lt;h2&gt;Make&lt;/h2&gt;
-&lt;p&gt;Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过&lt;code&gt;make -f rules.txt&lt;/code&gt;指定其 …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Make&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Beta's Note - programming</title><link href="/" rel="alternate"></link><link href="/feeds/programming.atom.xml" rel="self"></link><id>/</id><updated>2018-10-25T14:33:00+08:00</updated><subtitle>一个想找工作的Coder/c++/Python/ai</subtitle><entry><title>Make总结</title><link href="/makezong-jie.html" rel="alternate"></link><published>2018-10-25T14:33:00+08:00</published><updated>2018-10-25T14:33:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-25:/makezong-jie.html</id><summary type="html">&lt;p&gt;Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过&lt;code&gt;make -f rules.txt&lt;/code&gt;指定其他文件名.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Make&lt;/h2&gt;
 &lt;p&gt;Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过&lt;code&gt;make -f rules.txt&lt;/code&gt;指定其他文件名.&lt;/p&gt;
 &lt;h3&gt;Make&amp;nbsp;rules&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;target&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;prerequisites&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -17,19 +16,10 @@
 &lt;p&gt;命令表示如何更新目标，由一行或多行Shell命令组成．&lt;code&gt;#&lt;/code&gt;表示注释，&lt;code&gt;@&lt;/code&gt;关闭回声，允许使用等号自定义变量,变量放在&lt;code&gt;$()&lt;/code&gt;之间．&lt;/p&gt;
 &lt;p&gt;暂时之需要这些，如果以后还有需要再更新&lt;/p&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://www.ruanyifeng.com/blog/2015/02/make.html"&gt;make命令教程&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category><category term="make"></category></entry><entry><title>如何测试python代码</title><link href="/ru-he-ce-shi-pythondai-ma.html" rel="alternate"></link><published>2024-02-28T13:51:00+08:00</published><updated>2024-02-28T13:51:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2024-02-28:/ru-he-ce-shi-pythondai-ma.html</id><summary type="html">&lt;h2&gt;Profiling&amp;nbsp;Python&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://www.ruanyifeng.com/blog/2015/02/make.html"&gt;make命令教程&lt;/a&gt;&lt;/p&gt;</content><category term="programming"></category><category term="tool"></category></entry><entry><title>如何测试python代码</title><link href="/ru-he-ce-shi-pythondai-ma.html" rel="alternate"></link><published>2018-10-25T13:51:00+08:00</published><updated>2018-10-25T13:51:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-25:/ru-he-ce-shi-pythondai-ma.html</id><summary type="html">&lt;p&gt;怎么profile&amp;nbsp;python代码。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Profiling&amp;nbsp;Python&lt;/h2&gt;
 &lt;h3&gt;Timeit&lt;/h3&gt;
 &lt;p&gt;You can use &lt;code&gt;timeit&lt;/code&gt; in IPython to time the&amp;nbsp;statement.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="images/ipython-timeit.png"&gt;&lt;/p&gt;
-&lt;h3&gt;Profiler&lt;/h3&gt;
-&lt;p&gt;Say you have following python&amp;nbsp;code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;solve&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rand …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Profiling&amp;nbsp;Python&lt;/h2&gt;
-&lt;h3&gt;Timeit&lt;/h3&gt;
-&lt;p&gt;You can use &lt;code&gt;timeit&lt;/code&gt; in IPython to time the&amp;nbsp;statement.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="images/ipython-timeit.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="timeit" src="images/ipython-timeit.png"&gt;&lt;/p&gt;
 &lt;h3&gt;Profiler&lt;/h3&gt;
 &lt;p&gt;Say you have following python&amp;nbsp;code:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
@@ -44,7 +34,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;You can time the script using following code in&amp;nbsp;ipython:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="images/ipython-profile.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="profile" src="images/ipython-profile.png"&gt;&lt;/p&gt;
 &lt;p&gt;You can also use &lt;code&gt;python -m cProfile test.py&lt;/code&gt; to&amp;nbsp;profile.&lt;/p&gt;
 &lt;h3&gt;Line-profiler&lt;/h3&gt;
 &lt;ol&gt;
@@ -64,12 +54,10 @@
     &lt;span class="n"&gt;solve&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img alt="" src="images/ipython-lineprofile.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="lineprofile" src="images/ipython-lineprofile.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://www.scipy-lectures.org/advanced/optimizing/index.html"&gt;optimize python code&lt;/a&gt;
-&lt;a href="https://github.com/rkern/line_profiler"&gt;line-profiler&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category><category term="python"></category></entry><entry><title>设计模式</title><link href="/she-ji-mo-shi.html" rel="alternate"></link><published>2018-10-21T15:53:00+08:00</published><updated>2018-10-21T15:53:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-21:/she-ji-mo-shi.html</id><summary type="html">&lt;h2&gt;Head&amp;nbsp;first设计模式&lt;/h2&gt;
-&lt;h3&gt;策略模式&lt;/h3&gt;
-&lt;p&gt;策略模式定义了算法族，分别封装起来，让他们之间可以相 …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Head&amp;nbsp;first设计模式&lt;/h2&gt;
+&lt;a href="https://github.com/rkern/line_profiler"&gt;line-profiler&lt;/a&gt;&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>设计模式</title><link href="/she-ji-mo-shi.html" rel="alternate"></link><published>2018-10-21T15:53:00+08:00</published><updated>2018-10-21T15:53:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-21:/she-ji-mo-shi.html</id><summary type="html">&lt;p&gt;策略模式, 观察者模式, 装饰者模式,&amp;nbsp;工厂方法模式&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Head&amp;nbsp;first设计模式&lt;/h2&gt;
 &lt;h3&gt;策略模式&lt;/h3&gt;
 &lt;p&gt;策略模式定义了算法族，分别封装起来，让他们之间可以相互替换，此模式让算法的变化独立于使用算法的客户&lt;/p&gt;
 &lt;ul&gt;
@@ -90,8 +78,7 @@
 &lt;h3&gt;工厂方法模式&lt;/h3&gt;
 &lt;p&gt;工厂方法模式通过让子类决定该创建的对象是什么，来达到将对象创建的过程封装的目的．工厂方法模式定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个．工厂方法让类吧实例化推迟到子类&lt;/p&gt;
 &lt;h3&gt;Reference&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://www.processon.com/"&gt;&lt;span class="caps"&gt;UML&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category><category term="design pattern"></category></entry><entry><title>Python类总结</title><link href="/pythonlei-zong-jie.html" rel="alternate"></link><published>2018-10-21T13:52:00+08:00</published><updated>2018-10-21T13:52:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-21:/pythonlei-zong-jie.html</id><summary type="html">&lt;h2&gt;Class&lt;/h2&gt;
-&lt;p&gt;类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保 …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Class&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://www.processon.com/"&gt;&lt;span class="caps"&gt;UML&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>Python类总结</title><link href="/pythonlei-zong-jie.html" rel="alternate"></link><published>2018-10-21T13:52:00+08:00</published><updated>2018-10-21T13:52:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-21:/pythonlei-zong-jie.html</id><summary type="html">&lt;p&gt;类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保持各自的状态，类实例有类方法来修改类状态。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Class&lt;/h2&gt;
 &lt;p&gt;类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保持各自的状态，类实例有类方法来修改类状态。&lt;/p&gt;
 &lt;h3&gt;Namespace and&amp;nbsp;Scope&lt;/h3&gt;
 &lt;p&gt;namespace(命名空间)是变量名到对象的映射，Python中的命名空间包括：the set of built-in names, global names in a module and the local names in a function invocation.&amp;nbsp;不同命名空间中定义的变量名是没有关系的&lt;/p&gt;
@@ -185,17 +172,7 @@ class DerivedClassName(BaseClassName):
 &lt;p&gt;An overriding method in a derived class may in fact want to extend rather than simply replace the base class method of the same name. There is a simple way to call the base class method directly: just call BaseClassName.methodname(self, arguments). This is occasionally useful to clients as well. (Note that this only works if the base class is accessible as BaseClassName in the global&amp;nbsp;scope.)&lt;/p&gt;
 &lt;p&gt;Python has two built-in functions that work with&amp;nbsp;inheritance:&lt;/p&gt;
 &lt;p&gt;Use isinstance() to check an instance’s type: isinstance(obj, int) will be True only if obj.&lt;strong&gt;class&lt;/strong&gt; is int or some class derived from int.
-Use issubclass() to check class inheritance: issubclass(bool, int) is True since bool is a subclass of int. However, issubclass(float, int) is False since float is not a subclass of&amp;nbsp;int.&lt;/p&gt;</content><category term="Programming"></category><category term="python"></category></entry><entry><title>pelican blog搭建</title><link href="/pelican-blogda-jian.html" rel="alternate"></link><published>2018-10-20T16:32:00+08:00</published><updated>2018-10-20T16:32:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-20:/pelican-blogda-jian.html</id><summary type="html">&lt;h2&gt;Installation&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;pip install pelican&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pip install Markdown&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pelican-quickstart&lt;/code&gt; to build a quick start version&amp;nbsp;project &lt;/li&gt;
-&lt;li&gt;[Optional] &lt;code&gt;pip install typogrify&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;Usage&lt;/h2&gt;
-&lt;p&gt;blog&amp;nbsp;metadata&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;My&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
-&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2010&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10 …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Installation&lt;/h2&gt;
+Use issubclass() to check class inheritance: issubclass(bool, int) is True since bool is a subclass of int. However, issubclass(float, int) is False since float is not a subclass of&amp;nbsp;int.&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>pelican blog搭建</title><link href="/pelican-blogda-jian.html" rel="alternate"></link><published>2018-10-20T16:32:00+08:00</published><updated>2018-10-20T16:32:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-20:/pelican-blogda-jian.html</id><summary type="html">&lt;p&gt;pelican配置教程step by&amp;nbsp;step.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Installation&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;pip install pelican&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;pip install Markdown&lt;/code&gt;&lt;/li&gt;
@@ -223,7 +200,7 @@ Use issubclass() to check class inheritance: issubclass(bool, int) is True since
 &lt;/ul&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://docs.getpelican.com/en/stable/install.html"&gt;pelican&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://pypi.org/project/typogrify/"&gt;typogrify&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category><category term="pelican"></category><category term="blog"></category></entry><entry><title>Markdown语法介绍</title><link href="/markdownyu-fa-jie-shao.html" rel="alternate"></link><published>2018-10-14T21:14:00+08:00</published><updated>2018-10-14T21:14:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/markdownyu-fa-jie-shao.html</id><summary type="html">&lt;p&gt;这篇文章介绍Markdown的语法，包括标题、引用、列表、代码、强调、链接、表格、分割线、图片&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Table of&amp;nbsp;Contents&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://pypi.org/project/typogrify/"&gt;typogrify&lt;/a&gt;&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>Markdown语法介绍</title><link href="/markdownyu-fa-jie-shao.html" rel="alternate"></link><published>2018-10-14T21:14:00+08:00</published><updated>2018-10-14T21:14:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/markdownyu-fa-jie-shao.html</id><summary type="html">&lt;p&gt;这篇文章介绍Markdown的语法，包括标题、引用、列表、代码、强调、链接、表格、分割线、图片&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Table of&amp;nbsp;Contents&lt;/h2&gt;
 &lt;p&gt;This is a markdown file This is a markdown fileThis is a markdown file This is a markdown file This is a markdown file This is a markdown&amp;nbsp;file&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#标题"&gt;标题&lt;/a&gt;&lt;/li&gt;
@@ -312,8 +289,7 @@ BAB
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;Reference&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://coding.net/help/doc/project/markdown.html"&gt;Markdown语法介绍&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category><category term="markdown"></category></entry><entry><title>二分搜索的各种写法</title><link href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" rel="alternate"></link><published>2018-10-14T21:04:00+08:00</published><updated>2018-10-14T21:04:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/er-fen-sou-suo-de-ge-chong-xie-fa.html</id><summary type="html">&lt;ol&gt;
-&lt;li&gt;对于已排序的数组x[0..n-1]，想查找数t，若t在x中则返回其下标（如有多个重复，返回其中之一 …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;ol&gt;
+&lt;p&gt;&lt;a href="https://coding.net/help/doc/project/markdown.html"&gt;Markdown语法介绍&lt;/a&gt;&lt;/p&gt;</content><category term="programming"></category><category term="tool"></category></entry><entry><title>二分搜索的各种写法</title><link href="/er-fen-sou-suo-de-ge-chong-xie-fa.html" rel="alternate"></link><published>2018-10-14T21:04:00+08:00</published><updated>2018-10-14T21:04:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/er-fen-sou-suo-de-ge-chong-xie-fa.html</id><summary type="html">&lt;p&gt;对于已排序的数组x[0..n-1]，想查找数t，若t在x中则返回其下标（如有多个重复，返回其中之一)，若t不在x中则返回-1。&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;对于已排序的数组x[0..n-1]，想查找数t，若t在x中则返回其下标（如有多个重复，返回其中之一)，若t不在x中则返回-1。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;binarysearch&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
@@ -382,9 +358,7 @@ BAB
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;写二分搜索函数的关键是保持循环不变式，即保证t与区间两端点之间的大小关系不变，这样就可以根据区间两端的大小关系来判断其是否是你需要的结果了。&lt;/p&gt;</content><category term="Programming"></category><category term="binary search"></category><category term="algorithm"></category></entry><entry><title>Git命令整理</title><link href="/gitming-ling-zheng-li.html" rel="alternate"></link><published>2018-10-14T15:31:00+08:00</published><updated>2018-10-14T15:31:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/gitming-ling-zheng-li.html</id><summary type="html">&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概 …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;ol&gt;
+&lt;p&gt;写二分搜索函数的关键是保持循环不变式，即保证t与区间两端点之间的大小关系不变，这样就可以根据区间两端的大小关系来判断其是否是你需要的结果了。&lt;/p&gt;</content><category term="programming"></category><category term="algorithm"></category></entry><entry><title>Git命令整理</title><link href="/gitming-ling-zheng-li.html" rel="alternate"></link><published>2018-10-14T15:31:00+08:00</published><updated>2018-10-14T15:31:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-14:/gitming-ling-zheng-li.html</id><summary type="html">&lt;p&gt;首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&amp;nbsp;filename指令后)&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;首先需要明确三个概念，Git中的文件有三种状态: 已提交(commited), 已修改(modified)和已暂存(staged), 这里前两个概念比较好理解，已提交表示数据已保存(执行git commit指令后)，已修改表示修改了文件但还没有保存数据，而已暂存表示已经对当前经过修改的文件做了标记（执行git add&amp;nbsp;filename指令后)&lt;/p&gt;
 &lt;/li&gt;
@@ -556,8 +530,7 @@ BAB
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</content><category term="Programming"></category><category term="git"></category></entry><entry><title>利用VS Code Snippets生成C++头文件保护符</title><link href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html" rel="alternate"></link><published>2018-10-07T20:54:00+08:00</published><updated>2018-10-07T20:54:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-07:/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html</id><summary type="html">&lt;h3&gt;Solution&lt;/h3&gt;
-&lt;p&gt;将下列代码贴入你的&lt;code&gt;snippets&lt;/code&gt;中，然后在&lt;code&gt;cpp&lt;/code&gt;文件中输入&lt;code&gt;pre&lt;/code&gt;+&lt;code&gt;tab&lt;/code&gt;即可自动生成相 …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;/ol&gt;</content><category term="programming"></category><category term="tool"></category></entry><entry><title>利用VS Code Snippets生成C++头文件保护符</title><link href="/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html" rel="alternate"></link><published>2018-10-07T20:54:00+08:00</published><updated>2018-10-07T20:54:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-07:/li-yong-vs-code-snippetssheng-cheng-ctou-wen-jian-bao-hu-fu.html</id><summary type="html">&lt;p&gt;怎么利用VS Code&amp;nbsp;Snippets生成C++头文件保护符&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Solution&lt;/h3&gt;
 &lt;p&gt;将下列代码贴入你的&lt;code&gt;snippets&lt;/code&gt;中，然后在&lt;code&gt;cpp&lt;/code&gt;文件中输入&lt;code&gt;pre&lt;/code&gt;+&lt;code&gt;tab&lt;/code&gt;即可自动生成相关头文件&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Preprocessor of cpp file&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
@@ -585,10 +558,7 @@ BAB
 
 &lt;h3&gt;Reference&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_global-snippets"&gt;https://code.visualstudio.com/docs/editor/userdefinedsnippets#_global-snippets&lt;/a&gt;
-&lt;a href="https://github.com/Microsoft/vscode/issues/26108"&gt;https://github.com/Microsoft/vscode/issues/26108&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category><category term="vscode"></category><category term="c++"></category></entry><entry><title>C++ STL常用数据结构整理</title><link href="/c-stlchang-yong-shu-ju-jie-gou-zheng-li.html" rel="alternate"></link><published>2018-10-07T20:21:00+08:00</published><updated>2018-10-07T20:21:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-07:/c-stlchang-yong-shu-ju-jie-gou-zheng-li.html</id><summary type="html">&lt;ol&gt;
-&lt;li&gt;vector&lt;ul&gt;
-&lt;li&gt;插入push_back(),&amp;nbsp;时间复杂度O(1)&lt;/li&gt;
-&lt;li&gt;删除erase(iterator position),&amp;nbsp;时间复杂度O(n)取决于删除的位 …&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;ol&gt;
+&lt;a href="https://github.com/Microsoft/vscode/issues/26108"&gt;https://github.com/Microsoft/vscode/issues/26108&lt;/a&gt;&lt;/p&gt;</content><category term="programming"></category><category term="tool"></category></entry><entry><title>C++ STL常用数据结构整理</title><link href="/c-stlchang-yong-shu-ju-jie-gou-zheng-li.html" rel="alternate"></link><published>2018-10-07T20:21:00+08:00</published><updated>2018-10-07T20:21:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-07:/c-stlchang-yong-shu-ju-jie-gou-zheng-li.html</id><summary type="html">&lt;p&gt;vector, stack, queue, list, forward_list, deque, priority_queue,&amp;nbsp;set&amp;#8230;&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;vector&lt;ul&gt;
 &lt;li&gt;插入push_back(),&amp;nbsp;时间复杂度O(1)&lt;/li&gt;
 &lt;li&gt;删除erase(iterator position),&amp;nbsp;时间复杂度O(n)取决于删除的位置&lt;/li&gt;
@@ -704,4 +674,4 @@ BAB
 &lt;li&gt;key-value对，不支持[]访问&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</content><category term="Programming"></category><category term="c++"></category><category term="stl"></category></entry></feed>
+&lt;/ol&gt;</content><category term="programming"></category><category term="programing"></category></entry></feed>

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -60,7 +60,20 @@
       <a href="/">Beta's Note</a>
     </h1>
 
-    <p>work hard, keep steady</p>
+    <p>一个想找工作的Coder/c++/Python/ai</p>
+
+
+
+    <section id=sidebar_tags>
+      <dl>
+        <dt><a href="/tag/aigc"> aigc (1)</a></dt>
+        <dt><a href="/tag/tool"> tool (6)</a></dt>
+        <dt><a href="/tag/programing"> programing (5)</a></dt>
+        <dt><a href="/tag/math"> math (3)</a></dt>
+        <dt><a href="/tag/algorithm"> algorithm (1)</a></dt>
+        <dt><a id="tags_mores" href='/tags.html'>...more</a></dt>
+      </dl>
+    </section>
 
 
     <nav>
@@ -69,14 +82,20 @@
 
 
           <li>
-            <a target="_self" href="b" >a</a>
-          </li>
-          <li>
-            <a target="_self" href="d" >c</a>
+            <a target="_self" href="/archives.html" >文章列表</a>
           </li>
       </ul>
     </nav>
 
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/sjtuzbx"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+    </ul>
   </div>
 
 </aside>
@@ -85,6 +104,7 @@
 <nav>
   <a href="/">Home</a>
 
+  <a href="/archives.html">文章列表</a>
 
   <a href="/feeds/all.atom.xml">Atom</a>
 
@@ -94,17 +114,36 @@
 
 <article>
   <header>
-    <h2><a href="/makezong-jie.html#makezong-jie">Make总结</a></h2>
+    <h2><a href="/yi-ge-jian-dan-de-liao-tian-ji-qi-ren-ai-ba-fei-te.html#yi-ge-jian-dan-de-liao-tian-ji-qi-ren-ai-ba-fei-te">一个简单的聊天机器人 - &#8220;<span class="caps">AI</span>&nbsp;巴菲特&#8221;</a></h2>
     <p>
-      Posted on Wed 28 February 2024 in <a href="/category/programming.html">Programming</a>
+      Posted on Mon 26 February 2024 in <a href="/category/aigc.html">aigc</a>
 
           &#8226; Tagged with
-              <a href="/tag/make.html">make</a>
+              <a href="/tag/aigc.html">aigc</a>
     </p>
   </header>
   <div>
-      <div><h2>Make</h2>
-<p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过<code>make -f rules.txt</code>指定其 …</p></div>
+      <div><p>使用<a href="https://www.coze.com/">coze</a>搭建一个简单的聊天机器人 - <a href="https://www.coze.com/store/bot/7340085355959549960"><span class="caps">AI</span>&nbsp;巴菲特</a></p></div>
+        <br>
+        <a class="btn"
+           href="/yi-ge-jian-dan-de-liao-tian-ji-qi-ren-ai-ba-fei-te.html#yi-ge-jian-dan-de-liao-tian-ji-qi-ren-ai-ba-fei-te">
+          Continue reading
+        </a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="/makezong-jie.html#makezong-jie">Make总结</a></h2>
+    <p>
+      Posted on Thu 25 October 2018 in <a href="/category/programming.html">programming</a>
+
+          &#8226; Tagged with
+              <a href="/tag/tool.html">tool</a>
+    </p>
+  </header>
+  <div>
+      <div><p>Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过<code>make -f rules.txt</code>指定其他文件名.</p></div>
         <br>
         <a class="btn"
            href="/makezong-jie.html#makezong-jie">
@@ -117,23 +156,14 @@
   <header>
     <h2><a href="/ru-he-ce-shi-pythondai-ma.html#ru-he-ce-shi-pythondai-ma">如何测试python代码</a></h2>
     <p>
-      Posted on Wed 28 February 2024 in <a href="/category/programming.html">Programming</a>
+      Posted on Thu 25 October 2018 in <a href="/category/programming.html">programming</a>
 
           &#8226; Tagged with
-              <a href="/tag/python.html">python</a>
+              <a href="/tag/programing.html">programing</a>
     </p>
   </header>
   <div>
-      <div><h2>Profiling&nbsp;Python</h2>
-<h3>Timeit</h3>
-<p>You can use <code>timeit</code> in IPython to time the&nbsp;statement.</p>
-<p><img alt="" src="images/ipython-timeit.png"></p>
-<h3>Profiler</h3>
-<p>Say you have following python&nbsp;code:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="k">def</span> <span class="nf">solve</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand …</span></code></pre></div></div>
+      <div><p>怎么profile&nbsp;python代码。</p></div>
         <br>
         <a class="btn"
            href="/ru-he-ce-shi-pythondai-ma.html#ru-he-ce-shi-pythondai-ma">
@@ -146,16 +176,14 @@
   <header>
     <h2><a href="/she-ji-mo-shi.html#she-ji-mo-shi">设计模式</a></h2>
     <p>
-      Posted on Sun 21 October 2018 in <a href="/category/programming.html">Programming</a>
+      Posted on Sun 21 October 2018 in <a href="/category/programming.html">programming</a>
 
           &#8226; Tagged with
-              <a href="/tag/design-pattern.html">design pattern</a>
+              <a href="/tag/programing.html">programing</a>
     </p>
   </header>
   <div>
-      <div><h2>Head&nbsp;first设计模式</h2>
-<h3>策略模式</h3>
-<p>策略模式定义了算法族，分别封装起来，让他们之间可以相 …</p></div>
+      <div><p>策略模式, 观察者模式, 装饰者模式,&nbsp;工厂方法模式</p></div>
         <br>
         <a class="btn"
            href="/she-ji-mo-shi.html#she-ji-mo-shi">
@@ -168,15 +196,14 @@
   <header>
     <h2><a href="/pythonlei-zong-jie.html#pythonlei-zong-jie">Python类总结</a></h2>
     <p>
-      Posted on Sun 21 October 2018 in <a href="/category/programming.html">Programming</a>
+      Posted on Sun 21 October 2018 in <a href="/category/programming.html">programming</a>
 
           &#8226; Tagged with
-              <a href="/tag/python.html">python</a>
+              <a href="/tag/programing.html">programing</a>
     </p>
   </header>
   <div>
-      <div><h2>Class</h2>
-<p>类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保 …</p></div>
+      <div><p>类是方法和数据的集合，每个类有多个类实例，类实例有各自的属性保持各自的状态，类实例有类方法来修改类状态。</p></div>
         <br>
         <a class="btn"
            href="/pythonlei-zong-jie.html#pythonlei-zong-jie">
@@ -192,75 +219,11 @@
       Posted on Sat 20 October 2018 in <a href="/category/math.html">Math</a>
 
           &#8226; Tagged with
-              <a href="/tag/matrix.html">matrix</a>
+              <a href="/tag/math.html">math</a>
     </p>
   </header>
   <div>
-      <div><h2>一些有用的结论</h2>
-<ul>
-<li>实对称阵可以正交对角化</li>
-<li>特征值 <span class="math">\(\lambda_i\)</span>的几何重数是<span class="math">\((\lambda I-A …</span></li></ul><script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+      <div><p>一些有用的结论:&nbsp;实对称阵可以正交对角化</p></div>
         <br>
         <a class="btn"
            href="/ju-zhen-fu-xi.html#ju-zhen-fu-xi">
@@ -273,24 +236,14 @@
   <header>
     <h2><a href="/pelican-blogda-jian.html#pelican-blogda-jian">pelican&nbsp;blog搭建</a></h2>
     <p>
-      Posted on Sat 20 October 2018 in <a href="/category/programming.html">Programming</a>
+      Posted on Sat 20 October 2018 in <a href="/category/programming.html">programming</a>
 
           &#8226; Tagged with
-              <a href="/tag/pelican.html">pelican</a>,              <a href="/tag/blog.html">blog</a>
+              <a href="/tag/programing.html">programing</a>
     </p>
   </header>
   <div>
-      <div><h2>Installation</h2>
-<ol>
-<li><code>pip install pelican</code></li>
-<li><code>pip install Markdown</code></li>
-<li><code>pelican-quickstart</code> to build a quick start version&nbsp;project </li>
-<li>[Optional] <code>pip install typogrify</code></li>
-</ol>
-<h2>Usage</h2>
-<p>blog&nbsp;metadata</p>
-<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span><span class="w"> </span><span class="n">My</span><span class="w"> </span><span class="n">title</span>
-<span class="n">Date</span><span class="o">:</span><span class="w"> </span><span class="mi">2010</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span><span class="w"> </span><span class="mi">10 …</span></code></pre></div></div>
+      <div><p>pelican配置教程step by&nbsp;step.</p></div>
         <br>
         <a class="btn"
            href="/pelican-blogda-jian.html#pelican-blogda-jian">
@@ -306,7 +259,7 @@
       Posted on Sat 20 October 2018 in <a href="/category/math.html">Math</a>
 
           &#8226; Tagged with
-              <a href="/tag/matrix.html">matrix</a>,              <a href="/tag/calculus.html">calculus</a>
+              <a href="/tag/math.html">math</a>
     </p>
   </header>
   <div>
@@ -323,10 +276,10 @@
   <header>
     <h2><a href="/markdownyu-fa-jie-shao.html#markdownyu-fa-jie-shao">Markdown语法介绍</a></h2>
     <p>
-      Posted on Sun 14 October 2018 in <a href="/category/programming.html">Programming</a>
+      Posted on Sun 14 October 2018 in <a href="/category/programming.html">programming</a>
 
           &#8226; Tagged with
-              <a href="/tag/markdown.html">markdown</a>
+              <a href="/tag/tool.html">tool</a>
     </p>
   </header>
   <div>
@@ -343,39 +296,17 @@
   <header>
     <h2><a href="/er-fen-sou-suo-de-ge-chong-xie-fa.html#er-fen-sou-suo-de-ge-chong-xie-fa">二分搜索的各种写法</a></h2>
     <p>
-      Posted on Sun 14 October 2018 in <a href="/category/programming.html">Programming</a>
+      Posted on Sun 14 October 2018 in <a href="/category/programming.html">programming</a>
 
           &#8226; Tagged with
-              <a href="/tag/binary-search.html">binary search</a>,              <a href="/tag/algorithm.html">algorithm</a>
+              <a href="/tag/algorithm.html">algorithm</a>
     </p>
   </header>
   <div>
-      <div><ol>
-<li>对于已排序的数组x[0..n-1]，想查找数t，若t在x中则返回其下标（如有多个重复，返回其中之一 …</li></ol></div>
+      <div><p>对于已排序的数组x[0..n-1]，想查找数t，若t在x中则返回其下标（如有多个重复，返回其中之一)，若t不在x中则返回-1。</p></div>
         <br>
         <a class="btn"
            href="/er-fen-sou-suo-de-ge-chong-xie-fa.html#er-fen-sou-suo-de-ge-chong-xie-fa">
-          Continue reading
-        </a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="/tong-ji-tui-duan-fu-xi.html#tong-ji-tui-duan-fu-xi">统计推断复习</a></h2>
-    <p>
-      Posted on Sun 14 October 2018 in <a href="/category/math.html">Math</a>
-
-          &#8226; Tagged with
-              <a href="/tag/statistics.html">statistics</a>
-    </p>
-  </header>
-  <div>
-      <div><h3>总体</h3>
-<p>所研究对象的全体组成的集合称为总体。组成总体的每个元素(成员 …</p></div>
-        <br>
-        <a class="btn"
-           href="/tong-ji-tui-duan-fu-xi.html#tong-ji-tui-duan-fu-xi">
           Continue reading
         </a>
   </div>
