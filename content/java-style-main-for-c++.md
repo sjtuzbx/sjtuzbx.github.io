@@ -1,9 +1,9 @@
-Title: 设计模式
+Title: C++ 如何实现Java风格的c++入口函数
 Date: 2023-12-30 9:30
 Category: programming
 Tags: programing
 Author: sjtuzbx
-Summary: C++ 如何实现Java风格的c++入口函数
+Summary: 我们知道所有的程序都有一个`Main`入口函数，C++风格的入口函数是这样的.
 
 我们知道所有的程序都有一个`Main`入口函数，C++风格的入口函数是这样的.
 
