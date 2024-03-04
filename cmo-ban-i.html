@@ -34,17 +34,25 @@
 
  
 
-    <meta name="author" content="zbx" />
-    <meta name="description" content="" />
+<meta name="author" content="sjtuzbx" />
+<meta name="description" content="C++的模板是一项强大的特性，它使得泛型编程成为可能，提高了代码的复用性和性能." />
+<meta name="keywords" content="programing">
+
+
   <meta property="og:site_name" content="Beta's Note"/>
-  <meta property="og:type" content="blog"/>
-  <meta property="og:title" content="Beta's Note"/>
-  <meta property="og:description" content=""/>
+  <meta property="og:title" content="C++模板(I)"/>
+  <meta property="og:description" content="C++的模板是一项强大的特性，它使得泛型编程成为可能，提高了代码的复用性和性能."/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:url" content=""/>
+  <meta property="og:url" content="/cmo-ban-i.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2019-02-07 20:21:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="/author/sjtuzbx.html">
+  <meta property="article:section" content="programming"/>
+  <meta property="article:tag" content="programing"/>
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
 
-  <title>Beta's Note &ndash; Categories</title>
+  <title>Beta's Note &ndash; C++模板(I)</title>
 
 
 </head>
@@ -112,24 +120,58 @@
 
 <article class="single">
   <header>
-    <h1 id="categories">Categories</h1>
+      
+    <h1 id="cmo-ban-i">C++模板(I)</h1>
+    <p>
+      Posted on Thu 07 February 2019 in <a href="/category/programming.html">programming</a>
+
+    </p>
   </header>
+
+
   <div>
-    <ul class="list">
-      <li>
-        <a href="/category/aigc.html">aigc</a> (1)
-      </li>
-      <li>
-        <a href="/category/configuration.html">Configuration</a> (2)
-      </li>
-      <li>
-        <a href="/category/math.html">Math</a> (3)
-      </li>
-      <li>
-        <a href="/category/programming.html">programming</a> (15)
-      </li>
-    </ul>
+    <p>C++的模板是一项强大的特性，它使得泛型编程成为可能，提高了代码的复用性和性能。C++的模板主要有以下几个特性：</p>
+<ol>
+<li>
+<p>函数模板：C++允许创建通用的函数模板来处理不同类型的数据。通过函数模板，可以编写一次代码，适用于多种数据类型，实现代码的复用性和灵活性。</p>
+</li>
+<li>
+<p>类模板：C++还支持类模板，允许创建通用的类来处理不同类型的数据。类模板可以实现泛型编程，提供了对不同类型数据的通用操作。</p>
+</li>
+<li>
+<p>模板元编程：C++模板还支持元编程，即在编译期执行代码。模板元编程可以用于编译期数值计算，通过递归形式实现循环结构，提高代码的效率。</p>
+</li>
+<li>
+<p>类型特性：C++的模板技术还可以通过type&nbsp;traits实现一套操作类型特性的系统。类型特性可以用于在编译时对变量和函数进行类型检查，增加了代码的静态类型检查能力。</p>
+</li>
+</ol>
+<p>尤其是考虑到虚函数在使用过程中需要查找虚函数表造成的额外损耗，在很多情况下我们可以使用模板来代替虚函数以提升效率。</p>
   </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/programing.html">programing</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sjtuzbx-github-io-1';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
 </article>
 
 <footer>

@@ -114,7 +114,144 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;我们只需要专注于&lt;code&gt;run()&lt;/code&gt;函数的实现就行~&lt;/p&gt;
-&lt;p&gt;后续还可以进一步扩展基类app，比如添加&lt;code&gt;log&lt;/code&gt;,&lt;code&gt;thread&lt;/code&gt;和异常处理等额外功能~&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>Make总结</title><link href="/makezong-jie.html" rel="alternate"></link><published>2018-10-25T14:33:00+08:00</published><updated>2018-10-25T14:33:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-25:/makezong-jie.html</id><summary type="html">&lt;p&gt;Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过&lt;code&gt;make -f rules.txt&lt;/code&gt;指定其他文件名.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Make&lt;/h2&gt;
+&lt;p&gt;后续还可以进一步扩展基类app，比如添加&lt;code&gt;log&lt;/code&gt;,&lt;code&gt;thread&lt;/code&gt;和异常处理等额外功能~&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>C++并发编程(II)</title><link href="/cbing-fa-bian-cheng-ii.html" rel="alternate"></link><published>2021-02-14T09:00:00+08:00</published><updated>2021-02-14T09:00:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2021-02-14:/cbing-fa-bian-cheng-ii.html</id><summary type="html">&lt;p&gt;C++ threading,&amp;nbsp;互斥量，自旋锁&lt;/p&gt;</summary><content type="html">&lt;h3&gt;C++&amp;nbsp;threading&lt;/h3&gt;
+&lt;p&gt;我们可以使用&lt;code&gt;std::thread&lt;/code&gt;来创建一个线程，使用&lt;code&gt;join()&lt;/code&gt;来等待一个线程执行结束。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;thread&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;([](){&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;cout&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hello world.&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;endl&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;互斥量和自旋锁&lt;/h3&gt;
+&lt;p&gt;我们可以通过&lt;code&gt;std::mutex&lt;/code&gt;来创建一个互斥量，并使用&lt;code&gt;lock()&lt;/code&gt;上锁，&lt;code&gt;unlock()&lt;/code&gt;进行解锁。但是在实际使用中，我们一般不直接调用其成员函数，而是使用&lt;code&gt;RAII&lt;/code&gt;语法的模板类&lt;code&gt;std::lock_guard&lt;/code&gt;，这样做的好处是我们不需要再手动调用成员函数，并且不用担心异常处理和资源释放的问题。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;mutex&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;thread&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;critical_section&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;change_v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;mutex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mtx&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;lock_guard&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;mutex&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;lock&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mtx&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// 不用再手动释放资源&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;// 执行竞争操作&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;change_v&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;// 离开此作用域后 mtx 会被释放&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="kr"&gt;thread&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;t1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;critical_section&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;t2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;critical_section&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;t1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;t2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;cout&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;endl&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// print 2 or 3&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;std::mutex&lt;/code&gt;是一种&lt;strong&gt;阻塞锁&lt;/strong&gt;，当线程在等待互斥量的释放时，线程会被挂起，而不再消耗cpu时间。当其他线程释放互斥量后，操作系统会唤醒被挂起的线程。&lt;/p&gt;
+&lt;p&gt;在考虑高性能编程时，线程的挂起和被唤醒是很消耗时间的，我们可以考虑&lt;strong&gt;自旋锁&lt;/strong&gt;的形式来提升效率。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;自旋锁&lt;/strong&gt;与&lt;code&gt;std::mutex&lt;/code&gt;的区别是，自旋锁是一种无阻塞锁。即当线程在等待自旋锁时，不会被挂起而是一直消耗cpu时间，不停尝试获取自旋锁。&lt;/p&gt;
+&lt;p&gt;一种可能的实现是这样的，我们可以借助&lt;code&gt;std::atomic_flag&lt;/code&gt;这个原子操作类型来实现&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;atomic&amp;gt;&lt;/span&gt;
+
+&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;spin_lock&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;spin_lock&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;atomic_flag&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;flag_&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;flag_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;test_and_set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;memory_order_acquire&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// loop until return false&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="n"&gt;spin_lock&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;flag_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;clear&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;memory_order_release&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="k"&gt;private&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;atomic_flag&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;flag_&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ATOMIC_FLAG_INIT&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;我们也可以利用&lt;code&gt;gcc&lt;/code&gt;提供的&lt;code&gt;__sync_bool_compare_and_swap&lt;/code&gt;来实现自旋锁&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;spinlock&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="k"&gt;private&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;volatile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;bool&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;lock_&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;lock&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="n"&gt;__sync_bool_compare_and_swap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;lock_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="c1"&gt;// 执行除获取锁以外的策略，如暂时让出CPU等待或空转&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;unlock&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;__sync_bool_compare_and_swap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;lock_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;false&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这里的&lt;code&gt;__sync_bool_compare_and_swap&lt;/code&gt;的工作方式是比较&lt;code&gt;lock_&lt;/code&gt;和&lt;code&gt;false&lt;/code&gt;，如果二者相等，就让&lt;code&gt;lock_&lt;/code&gt;等于&lt;code&gt;true&lt;/code&gt;，并返回&lt;code&gt;true&lt;/code&gt;。如果&lt;code&gt;lock_&lt;/code&gt;和&lt;code&gt;false&lt;/code&gt;不相等，就不改变&lt;code&gt;lock_&lt;/code&gt;的值，并返回&lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;此外，这里&lt;code&gt;lock_&lt;/code&gt;变量使用&lt;code&gt;volatile&lt;/code&gt;修饰。&lt;code&gt;volatile&lt;/code&gt;是C++的一个类型修饰符，用于告诉编译器，声明为 volatile&amp;nbsp;的变量可能在编译器看不见的地方被修改，比如在程序之外被硬件修改或者在其他线程中被修改。其主要的两个作用是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;防止优化器优化：编译器在优化的时候可能会假设某个变量的值在没有明显的赋值的情况下不会发生改变，然后进行某些优化，如值的缓存、无效的代码剔除等等。但如果该变量被声明为&lt;code&gt;volatile&lt;/code&gt;，编译器就不能做这样的假设，每次引用这个变量都必须从它所在的内存中取回，不能通过寄存器中缓存的值或表达式消除进行优化。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提供内存屏障：在某些架构下，编译器或硬件可能会对内存访问进行重新排序，而 &lt;code&gt;volatile&lt;/code&gt;可以防止对这种特定变量的访问发生重新排序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;但是值得注意的是，&lt;code&gt;volatile&lt;/code&gt;并不能保证复杂操作的原子性。比如&lt;code&gt;++&lt;/code&gt;,&lt;code&gt;--&lt;/code&gt;,&lt;code&gt;+=&lt;/code&gt;等都不是原子操作。另外，C++中&lt;code&gt;volatile&lt;/code&gt;不提供内存模型的支持，如果你希望进行线程间的同步，你可能需要使用C++11引入的&lt;code&gt;std::atomic&lt;/code&gt;或者具有原子操作特性的函数。&lt;/p&gt;
+&lt;p&gt;再记录一个十分相似的使用&lt;code&gt;mutable&lt;/code&gt;,&lt;code&gt;mutable&lt;/code&gt;是一个专门用来改变类成员的关键字。当一个对象被声明为&lt;code&gt;const&lt;/code&gt;，其所有成员都将成为只读，这时我们就不能在类的&lt;code&gt;const&lt;/code&gt;成员函数中改变成员变量的值。但是有时我们需要在&lt;code&gt;const&lt;/code&gt;成员函数中改变一些类成员的值，这时就可以使用&lt;code&gt;mutable&lt;/code&gt;关键字来修饰那些需要改变的成员变量，即使在&lt;code&gt;const&lt;/code&gt;成员函数中，这些被&lt;code&gt;mutable&lt;/code&gt;修饰的成员变量的值也可以改变。&lt;/p&gt;
+&lt;p&gt;总结来说，这两者在语义和用途上是完全不同的，但是它们都改变了编译器默认的行为。&lt;code&gt;volatile&lt;/code&gt;关键字改变了编译器对特定类型变量的优化策略，而&lt;code&gt;mutable&lt;/code&gt;关键字对 &lt;code&gt;const&lt;/code&gt;对象中的数据成员的修改权进行了重新定义。&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>C++并发编程(I)</title><link href="/cbing-fa-bian-cheng-i.html" rel="alternate"></link><published>2021-02-07T20:21:00+08:00</published><updated>2021-02-07T20:21:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2021-02-07:/cbing-fa-bian-cheng-i.html</id><summary type="html">&lt;p&gt;学习C++并发编程，你可以遵循以下的学习顺序&lt;/p&gt;</summary><content type="html">&lt;p&gt;学习C++并发编程，你可以遵循以下的学习顺序：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;理解并发与并行：首先要理解并发和并行的概念以及两者之间的区别。并发是同时处理多个任务的能力；并行则是同时进行多个任务。并发关注如何最有效的管理和调度在同一时刻可能运行的多个任务，而并行则关注如何最大化利用资源来提升性能。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;C++ Threading：了解C++11引入的线程库，这是并发编程的基础。开始时你需要熟悉&amp;nbsp;std::thread，了解如何启动和同步线程。然后，你需要了解线程间如何共享数据，以及如何使用互斥锁，条件变量等机制来安全的在多个线程间操作共享数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Future和Promise： C++11 引入了 std::future и std::promise&amp;nbsp;两个类，它们提供了一种新的同步原语用于从异步操作中得到结果。你需要了解如何使用它们，并了解其与std::async函数的关系。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基于锁的数据结构：了解如何使用互斥锁，读写锁来实现并发数据结构，比如线程安全的队列。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;原子操作：C++11 引入了原子操作，也就是 std::atomic&amp;lt;&amp;gt; 类型。熟悉如何对 std::atomic&amp;lt;&amp;gt;&amp;nbsp;进行操作，并了解其在多线程代码中的重要性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;无锁数据结构：给高级用户的、可选的课程。通常你会需要理解更低层次的细节，例如CPU缓存，内存屏障和原子操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;并行算法：在C++17的STL中，原来的很多算法都有了并行版本。学习并实现那些并行算法，理解它们的工作原理，可以提高代码的性能。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任务并发模型：C++20的执行器和协程，这两个是当前用于并发和并行编程的热门话题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>C++多态和虚函数(I)</title><link href="/cduo-tai-he-xu-han-shu-i.html" rel="alternate"></link><published>2019-02-07T20:21:00+08:00</published><updated>2019-02-07T20:21:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2019-02-07:/cduo-tai-he-xu-han-shu-i.html</id><summary type="html">&lt;p&gt;多态和虚函数&lt;/p&gt;</summary><content type="html">&lt;h2&gt;什么是多态&lt;/h2&gt;
+&lt;p&gt;多态是C++面向对象编程的一个重要概念，它允许使用相同的接口来调用不同的方法。比如，当类之间存在继承关系时，指向基类的指针调用虚函数时，会根据对象的实际类型来调用相应的函数。&lt;/p&gt;
+&lt;h2&gt;什么是虚函数&lt;/h2&gt;
+&lt;p&gt;在C++中，虚函数是一种特殊的函数，它在基类中被声明，并在派生类中被重写。虚函数的主要目的是实现多态性，即允许我们使用基类的指针或引用来调用派生类中的函数。&lt;/p&gt;
+&lt;p&gt;虚函数的声明方式是在函数的声明前面加上关键字virtual。例如，&lt;code&gt;virtual void func();&lt;/code&gt;就是一个虚函数的声明。在派生类中重写虚函数时，可以不用再次使用virtual关键字，但是函数的返回类型、函数名和参数列表必须与基类中的虚函数完全相同。&lt;/p&gt;
+&lt;p&gt;当我们通过基类的指针或引用调用虚函数时，会发生动态绑定，也就是说，实际调用的函数是由指针或引用所指向对象的实际类型决定的。例如，如果基类指针指向的是派生类对象，那么调用的就是派生类中的虚函数。&lt;/p&gt;
+&lt;p&gt;虚函数的使用使得我们可以在不知道对象具体类型的情况下，通过基类的指针或引用来调用派生类中的函数，从而实现多态性。这在编写一些需要处理多种类型对象的代码时非常有用，可以提高代码的灵活性和可扩展性。&lt;/p&gt;
+&lt;h2&gt;什么是虚函数表&lt;/h2&gt;
+&lt;p&gt;在C++中，虚函数表是一种用于实现&lt;strong&gt;动态多态性&lt;/strong&gt;的机制。每一个包含虚函数的类（或者说，每一个多态类）都有一个虚函数表。这个表是编译器自动创建的，其中包含了类中虚函数的地址。&lt;/p&gt;
+&lt;p&gt;每一个多态类的对象都有一个指向虚函数表的指针，通常这个指针是存储在对象的内存空间中的。当我们通过基类的指针或引用调用虚函数时，编译器会根据这个指针找到虚函数表，然后在表中查找对应的虚函数，然后调用这个函数。这就是&lt;strong&gt;动态绑定&lt;/strong&gt;的过程。&lt;/p&gt;
+&lt;p&gt;虚函数表是C++实现动态多态性的关键。它使得我们可以在运行时根据对象的实际类型来调用相应的虚函数，这在编写一些需要处理多种类型对象的代码时非常有用，可以提高代码的灵活性和可扩展性。&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>C++模板(I)</title><link href="/cmo-ban-i.html" rel="alternate"></link><published>2019-02-07T20:21:00+08:00</published><updated>2019-02-07T20:21:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2019-02-07:/cmo-ban-i.html</id><summary type="html">&lt;p&gt;C++的模板是一项强大的特性，它使得泛型编程成为可能，提高了代码的复用性和性能.&lt;/p&gt;</summary><content type="html">&lt;p&gt;C++的模板是一项强大的特性，它使得泛型编程成为可能，提高了代码的复用性和性能。C++的模板主要有以下几个特性：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;函数模板：C++允许创建通用的函数模板来处理不同类型的数据。通过函数模板，可以编写一次代码，适用于多种数据类型，实现代码的复用性和灵活性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类模板：C++还支持类模板，允许创建通用的类来处理不同类型的数据。类模板可以实现泛型编程，提供了对不同类型数据的通用操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模板元编程：C++模板还支持元编程，即在编译期执行代码。模板元编程可以用于编译期数值计算，通过递归形式实现循环结构，提高代码的效率。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类型特性：C++的模板技术还可以通过type&amp;nbsp;traits实现一套操作类型特性的系统。类型特性可以用于在编译时对变量和函数进行类型检查，增加了代码的静态类型检查能力。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;尤其是考虑到虚函数在使用过程中需要查找虚函数表造成的额外损耗，在很多情况下我们可以使用模板来代替虚函数以提升效率。&lt;/p&gt;</content><category term="programming"></category><category term="programing"></category></entry><entry><title>Make总结</title><link href="/makezong-jie.html" rel="alternate"></link><published>2018-10-25T14:33:00+08:00</published><updated>2018-10-25T14:33:00+08:00</updated><author><name>sjtuzbx</name></author><id>tag:None,2018-10-25:/makezong-jie.html</id><summary type="html">&lt;p&gt;Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过&lt;code&gt;make -f rules.txt&lt;/code&gt;指定其他文件名.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Make&lt;/h2&gt;
 &lt;p&gt;Make是常见的构建工具，按照文件中写好的规则进行构建. Make命令放在一个Makefile的文件中，你也可以通过&lt;code&gt;make -f rules.txt&lt;/code&gt;指定其他文件名.&lt;/p&gt;
 &lt;h3&gt;Make&amp;nbsp;rules&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;target&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;prerequisites&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;

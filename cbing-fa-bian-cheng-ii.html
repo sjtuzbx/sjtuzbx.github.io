@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/custom.css">
+
+  <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+
+
+  <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Beta's Note Atom">
+
+
+
+ 
+
+<meta name="author" content="sjtuzbx" />
+<meta name="description" content="C++ threading, 互斥量，自旋锁" />
+<meta name="keywords" content="programing">
+
+
+  <meta property="og:site_name" content="Beta's Note"/>
+  <meta property="og:title" content="C++并发编程(II)"/>
+  <meta property="og:description" content="C++ threading, 互斥量，自旋锁"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="/cbing-fa-bian-cheng-ii.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-02-14 09:00:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="/author/sjtuzbx.html">
+  <meta property="article:section" content="programming"/>
+  <meta property="article:tag" content="programing"/>
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
+
+  <title>Beta's Note &ndash; C++并发编程(II)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="/">
+      <img src="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4" alt="Beta's Note" title="Beta's Note">
+    </a>
+
+    <h1>
+      <a href="/">Beta's Note</a>
+    </h1>
+
+    <p>一个想找工作的Coder/c++/Python/ai</p>
+
+
+
+    <section id=sidebar_tags>
+      <dl>
+        <dt><a href="/tag/aigc"> aigc (1)</a></dt>
+        <dt><a href="/tag/programing"> programing (10)</a></dt>
+        <dt><a href="/tag/tool"> tool (6)</a></dt>
+        <dt><a href="/tag/math"> math (3)</a></dt>
+        <dt><a href="/tag/algorithm"> algorithm (1)</a></dt>
+        <dt><a id="tags_mores" href='/tags.html'>...more</a></dt>
+      </dl>
+    </section>
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="/archives.html" >文章列表</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/sjtuzbx"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/archives.html">文章列表</a>
+
+  <a href="/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="cbing-fa-bian-cheng-ii">C++并发编程(<span class="caps">II</span>)</h1>
+    <p>
+      Posted on Sun 14 February 2021 in <a href="/category/programming.html">programming</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <h3>C++&nbsp;threading</h3>
+<p>我们可以使用<code>std::thread</code>来创建一个线程，使用<code>join()</code>来等待一个线程执行结束。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t</span><span class="p">([](){</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;hello world.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>互斥量和自旋锁</h3>
+<p>我们可以通过<code>std::mutex</code>来创建一个互斥量，并使用<code>lock()</code>上锁，<code>unlock()</code>进行解锁。但是在实际使用中，我们一般不直接调用其成员函数，而是使用<code>RAII</code>语法的模板类<code>std::lock_guard</code>，这样做的好处是我们不需要再手动调用成员函数，并且不用担心异常处理和资源释放的问题。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">critical_section</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">change_v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="w"> </span><span class="n">mtx</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lock</span><span class="p">(</span><span class="n">mtx</span><span class="p">);</span><span class="w"> </span><span class="c1">// 不用再手动释放资源</span>
+
+<span class="w">    </span><span class="c1">// 执行竞争操作</span>
+<span class="w">    </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">change_v</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 离开此作用域后 mtx 会被释放</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="n">critical_section</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">t2</span><span class="p">(</span><span class="n">critical_section</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+<span class="w">    </span><span class="n">t2</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// print 2 or 3</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><code>std::mutex</code>是一种<strong>阻塞锁</strong>，当线程在等待互斥量的释放时，线程会被挂起，而不再消耗cpu时间。当其他线程释放互斥量后，操作系统会唤醒被挂起的线程。</p>
+<p>在考虑高性能编程时，线程的挂起和被唤醒是很消耗时间的，我们可以考虑<strong>自旋锁</strong>的形式来提升效率。</p>
+<p><strong>自旋锁</strong>与<code>std::mutex</code>的区别是，自旋锁是一种无阻塞锁。即当线程在等待自旋锁时，不会被挂起而是一直消耗cpu时间，不停尝试获取自旋锁。</p>
+<p>一种可能的实现是这样的，我们可以借助<code>std::atomic_flag</code>这个原子操作类型来实现</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;atomic&gt;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">spin_lock</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">spin_lock</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">atomic_flag</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flag</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">flag_</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">flag_</span><span class="p">.</span><span class="n">test_and_set</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">));</span><span class="w"> </span><span class="c1">// loop until return false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="o">~</span><span class="n">spin_lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">flag_</span><span class="p">.</span><span class="n">clear</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_release</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">atomic_flag</span><span class="w"> </span><span class="o">&amp;</span><span class="n">flag_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ATOMIC_FLAG_INIT</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>我们也可以利用<code>gcc</code>提供的<code>__sync_bool_compare_and_swap</code>来实现自旋锁</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">spinlock</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">lock_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">__sync_bool_compare_and_swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock_</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// 执行除获取锁以外的策略，如暂时让出CPU等待或空转</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">__sync_bool_compare_and_swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">lock_</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+
+<p>这里的<code>__sync_bool_compare_and_swap</code>的工作方式是比较<code>lock_</code>和<code>false</code>，如果二者相等，就让<code>lock_</code>等于<code>true</code>，并返回<code>true</code>。如果<code>lock_</code>和<code>false</code>不相等，就不改变<code>lock_</code>的值，并返回<code>false</code>.</p>
+<p>此外，这里<code>lock_</code>变量使用<code>volatile</code>修饰。<code>volatile</code>是C++的一个类型修饰符，用于告诉编译器，声明为 volatile&nbsp;的变量可能在编译器看不见的地方被修改，比如在程序之外被硬件修改或者在其他线程中被修改。其主要的两个作用是：</p>
+<ol>
+<li>
+<p>防止优化器优化：编译器在优化的时候可能会假设某个变量的值在没有明显的赋值的情况下不会发生改变，然后进行某些优化，如值的缓存、无效的代码剔除等等。但如果该变量被声明为<code>volatile</code>，编译器就不能做这样的假设，每次引用这个变量都必须从它所在的内存中取回，不能通过寄存器中缓存的值或表达式消除进行优化。</p>
+</li>
+<li>
+<p>提供内存屏障：在某些架构下，编译器或硬件可能会对内存访问进行重新排序，而 <code>volatile</code>可以防止对这种特定变量的访问发生重新排序。</p>
+</li>
+</ol>
+<p>但是值得注意的是，<code>volatile</code>并不能保证复杂操作的原子性。比如<code>++</code>,<code>--</code>,<code>+=</code>等都不是原子操作。另外，C++中<code>volatile</code>不提供内存模型的支持，如果你希望进行线程间的同步，你可能需要使用C++11引入的<code>std::atomic</code>或者具有原子操作特性的函数。</p>
+<p>再记录一个十分相似的使用<code>mutable</code>,<code>mutable</code>是一个专门用来改变类成员的关键字。当一个对象被声明为<code>const</code>，其所有成员都将成为只读，这时我们就不能在类的<code>const</code>成员函数中改变成员变量的值。但是有时我们需要在<code>const</code>成员函数中改变一些类成员的值，这时就可以使用<code>mutable</code>关键字来修饰那些需要改变的成员变量，即使在<code>const</code>成员函数中，这些被<code>mutable</code>修饰的成员变量的值也可以改变。</p>
+<p>总结来说，这两者在语义和用途上是完全不同的，但是它们都改变了编译器默认的行为。<code>volatile</code>关键字改变了编译器对特定类型变量的优化策略，而<code>mutable</code>关键字对 <code>const</code>对象中的数据成员的修改权进行了重新定义。</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/programing.html">programing</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sjtuzbx-github-io-1';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Beta's Note ",
+  "url" : "",
+  "image": "https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4",
+  "description": ""
+}
+</script>
+</body>
+</html>

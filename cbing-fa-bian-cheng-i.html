@@ -35,24 +35,24 @@
  
 
 <meta name="author" content="sjtuzbx" />
-<meta name="description" content="VS Code怎么使用使用Anaconda Prompt作为默认terminal" />
-<meta name="keywords" content="tool">
+<meta name="description" content="学习C++并发编程，你可以遵循以下的学习顺序" />
+<meta name="keywords" content="programing">
 
 
   <meta property="og:site_name" content="Beta's Note"/>
-  <meta property="og:title" content="VS Code使用Anaconda Prompt作为默认terminal"/>
-  <meta property="og:description" content="VS Code怎么使用使用Anaconda Prompt作为默认terminal"/>
+  <meta property="og:title" content="C++并发编程(I)"/>
+  <meta property="og:description" content="学习C++并发编程，你可以遵循以下的学习顺序"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:url" content="/vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal.html"/>
+  <meta property="og:url" content="/cbing-fa-bian-cheng-i.html"/>
   <meta property="og:type" content="article"/>
-  <meta property="article:published_time" content="2018-10-07 21:03:00+08:00"/>
+  <meta property="article:published_time" content="2021-02-07 20:21:00+08:00"/>
   <meta property="article:modified_time" content=""/>
   <meta property="article:author" content="/author/sjtuzbx.html">
-  <meta property="article:section" content="Configuration"/>
-  <meta property="article:tag" content="tool"/>
+  <meta property="article:section" content="programming"/>
+  <meta property="article:tag" content="programing"/>
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
 
-  <title>Beta's Note &ndash; VS Code使用Anaconda Prompt作为默认terminal</title>
+  <title>Beta's Note &ndash; C++并发编程(I)</title>
 
 
 </head>
@@ -121,30 +121,46 @@
 <article class="single">
   <header>
       
-    <h1 id="vs-codeshi-yong-anaconda-promptzuo-wei-mo-ren-terminal"><span class="caps">VS</span> Code使用Anaconda&nbsp;Prompt作为默认terminal</h1>
+    <h1 id="cbing-fa-bian-cheng-i">C++并发编程(I)</h1>
     <p>
-      Posted on Sun 07 October 2018 in <a href="/category/configuration.html">Configuration</a>
+      Posted on Sun 07 February 2021 in <a href="/category/programming.html">programming</a>
 
     </p>
   </header>
 
 
   <div>
-    <h3>Solution</h3>
-<p>在你自己的<code>User settings</code>中添加下列代码</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;terminal.integrated.shell.windows&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;C:\\WINDOWS\\System32\\cmd.exe&quot;</span><span class="p">,</span>
-<span class="s2">&quot;terminal.integrated.shellArgs.windows&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;/K&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;C:\\Users\\ben\\Anaconda3\\Scripts\\activate.bat C:\\Users\\ben\\Anaconda3&quot;</span><span class="w">       </span>
-<span class="p">]</span>
-</code></pre></div>
-
-<p>其中<code>terminal.integrated.shellArgs.windows</code>后的参数可以通过右键点击<code>Anaconda Prompt</code>选择<code>属性</code>,复制目标一栏中后半部分路径获得</p>
-<h3>Reference</h3>
-<p><a href="http://mscodingblog.blogspot.com/2017/08/setup-integrated-terminal-in-vs-code-to.html">http://mscodingblog.blogspot.com/2017/08/setup-integrated-terminal-in-vs-code-to.html</a></p>
+    <p>学习C++并发编程，你可以遵循以下的学习顺序：</p>
+<ol>
+<li>
+<p>理解并发与并行：首先要理解并发和并行的概念以及两者之间的区别。并发是同时处理多个任务的能力；并行则是同时进行多个任务。并发关注如何最有效的管理和调度在同一时刻可能运行的多个任务，而并行则关注如何最大化利用资源来提升性能。</p>
+</li>
+<li>
+<p>C++ Threading：了解C++11引入的线程库，这是并发编程的基础。开始时你需要熟悉&nbsp;std::thread，了解如何启动和同步线程。然后，你需要了解线程间如何共享数据，以及如何使用互斥锁，条件变量等机制来安全的在多个线程间操作共享数据。</p>
+</li>
+<li>
+<p>Future和Promise： C++11 引入了 std::future и std::promise&nbsp;两个类，它们提供了一种新的同步原语用于从异步操作中得到结果。你需要了解如何使用它们，并了解其与std::async函数的关系。</p>
+</li>
+<li>
+<p>基于锁的数据结构：了解如何使用互斥锁，读写锁来实现并发数据结构，比如线程安全的队列。</p>
+</li>
+<li>
+<p>原子操作：C++11 引入了原子操作，也就是 std::atomic&lt;&gt; 类型。熟悉如何对 std::atomic&lt;&gt;&nbsp;进行操作，并了解其在多线程代码中的重要性。</p>
+</li>
+<li>
+<p>无锁数据结构：给高级用户的、可选的课程。通常你会需要理解更低层次的细节，例如CPU缓存，内存屏障和原子操作。</p>
+</li>
+<li>
+<p>并行算法：在C++17的STL中，原来的很多算法都有了并行版本。学习并实现那些并行算法，理解它们的工作原理，可以提高代码的性能。</p>
+</li>
+<li>
+<p>任务并发模型：C++20的执行器和协程，这两个是当前用于并发和并行编程的热门话题。</p>
+</li>
+</ol>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="/tag/tool.html">tool</a>
+      <a href="/tag/programing.html">programing</a>
     </p>
   </div>
 
