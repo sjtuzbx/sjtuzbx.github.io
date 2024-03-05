@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+          href="/theme/pygments/github.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/custom.css">
+
+  <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+
+
+  <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Beta's Note Atom">
+
+
+
+ 
+
+<meta name="author" content="sjtuzbx" />
+<meta name="description" content="什么是std::async/std::future/std::promise/std::packaged_task" />
+<meta name="keywords" content="programing">
+
+
+  <meta property="og:site_name" content="Beta's Note"/>
+  <meta property="og:title" content="C++并发编程(III)"/>
+  <meta property="og:description" content="什么是std::async/std::future/std::promise/std::packaged_task"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="/cbing-fa-bian-cheng-iii.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-02-21 10:00:00+08:00"/>
+  <meta property="article:modified_time" content=""/>
+  <meta property="article:author" content="/author/sjtuzbx.html">
+  <meta property="article:section" content="programming"/>
+  <meta property="article:tag" content="programing"/>
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4">
+
+  <title>Beta's Note &ndash; C++并发编程(III)</title>
+
+
+</head>
+<body class="light-theme">
+
+<aside>
+  <div>
+    <a href="/">
+      <img src="https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4" alt="Beta's Note" title="Beta's Note">
+    </a>
+
+    <h1>
+      <a href="/">Beta's Note</a>
+    </h1>
+
+    <p>一个想找工作的Coder/c++/Python/ai</p>
+
+
+
+    <section id=sidebar_tags>
+      <dl>
+        <dt><a href="/tag/aigc"> aigc (1)</a></dt>
+        <dt><a href="/tag/programing"> programing (11)</a></dt>
+        <dt><a href="/tag/tool"> tool (6)</a></dt>
+        <dt><a href="/tag/math"> math (3)</a></dt>
+        <dt><a href="/tag/algorithm"> algorithm (1)</a></dt>
+        <dt><a id="tags_mores" href='/tags.html'>...more</a></dt>
+      </dl>
+    </section>
+
+
+    <nav>
+      <ul class="list">
+
+
+
+          <li>
+            <a target="_self" href="/archives.html" >文章列表</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-github"
+           href="https://github.com/sjtuzbx"
+           target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</aside>
+  <main>
+
+<nav>
+  <a href="/">Home</a>
+
+  <a href="/archives.html">文章列表</a>
+
+  <a href="/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="cbing-fa-bian-cheng-iii">C++并发编程(<span class="caps">III</span>)</h1>
+    <p>
+      Posted on Sun 21 February 2021 in <a href="/category/programming.html">programming</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>我们知道<code>std::thread</code>会创新一个新进程并执行传入的函数。但是<code>std::thread</code>没有提供从线程函数中获取返回值的<strong>直接方式</strong>。如果通过<strong>传参</strong>的方式获取线程的返回值,
+这在多线程环境中可能会出现数据竞争的问题，需要合理使用互斥锁或其他同步手段防止这种情况。因此c++提供了<code>std::async</code>和<code>std::future</code>来简化这种问题。</p>
+<h3>std::async和std::future</h3>
+<p><code>std::async</code>是C++11标准库中用于处理异步任务的函数。这个函数的主要目的是为了简化并发并尽可能地让并发变得易于使用。具体来说，<code>std::async</code>函数允许我们在独立的线程上异步地执行函数或可调用对象，并返回一个<code>std::future</code>对象，我们可以通过这个对象获取这个函数的返回值。</p>
+<p>那什么是<code>std::future</code>对象呢? 在C++中，<code>std::future</code>是一个模板类，它表示一个异步操作的结果。你可以使用 std::future&nbsp;来获取在另一个线程或异步任务中计算的值，而且没有必要立即获取这个值，你可以在稍后的某个时刻获取。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
+
+<span class="c1">// 移动一个函数的执行到一个单独的线程，并获取它的返回值</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">compute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 创建一个异步任务</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">async</span><span class="p">(</span><span class="n">compute</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 在这里可以做其他的事情...</span>
+
+<span class="w">    </span><span class="c1">// 从异步任务获取返回值</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">computed_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Computed value: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">computed_value</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>比如我们就使用<code>std::async</code>启动另一个线程异步执行<code>compute</code>函数，然后调用<code>get()</code>成员函数获取计算的结果，如果计算没有完成，程序会在此等待直到获取结果。</p>
+<h3>std::promise对象</h3>
+<p><code>std::promise</code>是C++标准库中一个用于异步编程的模板类，它可以很方便地在一个线程中存储一个值或异常，并能让另一个线程访问这个值或异常。 简单来说，你可以把<code>std::promise</code>想象成一个用于异步操作的管道的一端，而这个管道的另一端则是<code>std::future</code>对象。
+一个<code>std::promise</code>对象包含一个共享的共享状态，这个状态可以包含一个值或一个异常。 可以通过调用<code>std::promise::set_value</code>或者<code>std::promise::set_exception</code>方法来设置这个共享状态。这两个方法都会将共享状态标记为<code>ready</code>，同时通知任何等待这个<code>std::promise</code>对象的<code>std::future</code>对象。
+下面是一个示例，展示了如何使用<code>std::promise</code>对象来传递一个计算结果从一个线程到另一个线程：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">intPromise</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// 做一些计算</span>
+<span class="w">    </span><span class="n">intPromise</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="w"> </span><span class="c1">// 将结果设置到promise对象中</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 创建一个std::promise对象</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">promise</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">prom</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 获取与promise相关联的future对象</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prom</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 启动一个新线程，并将promise移动到新线程中</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">t</span><span class="p">(</span><span class="n">calculate</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">prom</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// 获取计算结果</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The result is &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">fut</span><span class="p">.</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 等待线程完成</span>
+<span class="w">    </span><span class="n">t</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>std::packaged_task对象</h3>
+<p><code>std::packaged_task</code>是一个类模板，它是一个可调用对象包装器，用来封装类似函数的可调用目标（包括函数、<code>Lambda</code>表达式等），并且它可以有返回值。当你调用<code>std::packaged_task</code>对象时，它会调用被包装的函数，并存储该函数的返回值或捕获到的异常。你可以通过一个<code>std::future</code>对象获取这个结果，或等待它被计算出来。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;future&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 将一个返回值为7的 lambda 表达式封装到 task 中</span>
+<span class="w">    </span><span class="c1">// std::packaged_task 的模板参数为要封装函数的类型</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">packaged_task</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">([](){</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="mi">2000</span><span class="n">ms</span><span class="p">);</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">elapsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Waited &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">elapsed</span><span class="p">.</span><span class="n">count</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e6</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;ms </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task</span><span class="p">.</span><span class="n">get_future</span><span class="p">();</span><span class="w"> </span><span class="c1">// 获得 task 的期物</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">task</span><span class="p">)).</span><span class="n">detach</span><span class="p">();</span><span class="w"> </span><span class="c1">// 在一个线程中执行 task</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;waiting...&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">result</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span><span class="w"> </span><span class="c1">// 在此设置屏障，阻塞到期物的完成</span>
+
+<span class="w">    </span><span class="c1">// 输出执行结果</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;done!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="w"> </span><span class="n">endl</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;future result is &quot;</span>
+<span class="w">              </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/programing.html">programing</a>
+    </p>
+  </div>
+
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'sjtuzbx-github-io-1';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+<footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Beta's Note ",
+  "url" : "",
+  "image": "https://avatars.githubusercontent.com/u/36227079?s=400&u=36f9635e7f0d57d279ea72a20ac16b8eac71521e&v=4",
+  "description": ""
+}
+</script>
+</body>
+</html>
